@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 // import Toyota_logo from '../img/Toyota_logo.png'
 
 class Navbar extends Component {
@@ -24,16 +25,16 @@ class Navbar extends Component {
 
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <a className="nav-link" href="register.html">Manage SOP</a>
+            <Link className="nav-link" to="/manage_sop">Manage SOP</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="register.html">Manage Users</a>
+           <Link className="nav-link" to="/manage_users">Manage Users</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="register.html">My SOP</a>
+           <Link className="nav-link" to="/my_sop">My SOP</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="login.html">Log out</a>
+           <Link className="nav-link" to="/logout">Log out</Link>
           </li>
         </ul>
       </div>
