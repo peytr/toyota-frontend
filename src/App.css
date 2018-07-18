@@ -18,6 +18,17 @@
   color: #ffffff !important;
 }
 
+input.btn{
+  font-size: 1.3em;
+  background-color: #d71921 !important;
+  border-color: #d71921;
+}
+.btn{
+  font-size: 1.3em;
+  background-color: #d71921 !important;
+  border-color: #d71921;
+}
+
 img {
   display: block
 }
