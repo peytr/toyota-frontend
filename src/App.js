@@ -13,6 +13,10 @@ import ManageUsers from './components/user/ManageUsers'
 import ViewUser from './components/user/ViewUser'
 import AdminViewUser from './components/user/AdminViewUser'
 
+import AdminViewUserLC from './components/user/AdminViewUserLC'
+import AdminViewUserPC from './components/user/AdminViewUserPC'
+
+
 class App extends Component {
 
   state = {
@@ -29,6 +33,8 @@ class App extends Component {
   
   render() {
     return(<AdminViewUser/>)
+    // return(<AdminViewUserLC/>)
+    // return(<AdminViewUserPC/>)
     // return(<ViewUser/>)
     // return(<MyProfile/>)
 

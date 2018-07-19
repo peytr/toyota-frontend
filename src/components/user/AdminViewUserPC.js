@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import axios from '../api/init'
 import instance from '../api/init'
 
-class AdminViewUser extends Component {
+class AdminViewUserPC extends Component {
   constructor(props) {
     super(props);
 
@@ -35,7 +35,7 @@ class AdminViewUser extends Component {
     event.preventDefault();
     
     //TODO: need to understand how to pass this.state.inputvalue each corresponding key
-    user = {
+    const user = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       employeeNumber: this.state.employeeNumber,
@@ -67,63 +67,62 @@ class AdminViewUser extends Component {
   
   render() {
     if(this.state.user) {
-    return (
-      
-      <div>
-        <h1>Admin View User</h1>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-          <label className="label">First Name</label>
-          <div className="control">
-              <input className="input" type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} placeholder={this.state.user.firstName}/>
-          </div>
-          <p></p>
-          <label className="label">Last Name</label>
-          <div className="control">
-              <input className="input" type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} placeholder={this.state.user.lastName}/>
-          </div>
-          <p></p>
-          <label className="label">Employee Number</label>
-          <div className="control">
-              <input className="input" type="text" name="employeeNumber" value={this.state.employeeNumber} onChange={this.handleChange} placeholder={this.state.user.employeeNumber}/>
-          </div>
-          <p></p>
-          <label className="label">Email</label>
-          <div className="control">
-              <input className="input" type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder={this.state.user.email}/>
-          </div>
-          <p></p>
-          <label className="label">Department</label>
-          <div className="control">
-              <input className="input" type="text" name="department" value={this.state.department} onChange={this.handleChange} placeholder={this.state.user.department}/>
-          </div>
-          <p></p>
-          <div className="control">
-            <label className="checkbox">
-              <input
-                name="active"
-                type="checkbox"
-                checked={this.state.active}
-                onChange={this.handleChange}
-              />
-              Active
-            </label>
-          </div>
-          <p></p>
-          <div className="control">
-            <label className="checkbox">
-              <input
-                name="admin"
-                type="checkbox"
-                checked={this.state.admin}
-                onChange={this.handleChange}
-              />
-              Admin
-            </label>
-          </div>
-          <input type="submit" value="Submit"/>
-        </form>
-      </div>
-    )
+      return (
+        <div>
+          <h1>Admin View User</h1>
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <label className="label">First Name</label>
+            <div className="control">
+                <input className="input" type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange} placeholder={this.state.user.firstName}/>
+            </div>
+            <p></p>
+            <label className="label">Last Name</label>
+            <div className="control">
+                <input className="input" type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange} placeholder={this.state.user.lastName}/>
+            </div>
+            <p></p>
+            <label className="label">Employee Number</label>
+            <div className="control">
+                <input className="input" type="text" name="employeeNumber" value={this.state.employeeNumber} onChange={this.handleChange} placeholder={this.state.user.employeeNumber}/>
+            </div>
+            <p></p>
+            <label className="label">Email</label>
+            <div className="control">
+                <input className="input" type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder={this.state.user.email}/>
+            </div>
+            <p></p>
+            <label className="label">Department</label>
+            <div className="control">
+                <input className="input" type="text" name="department" value={this.state.department} onChange={this.handleChange} placeholder={this.state.user.department}/>
+            </div>
+            <p></p>
+            <div className="control">
+              <label className="checkbox">
+                <input
+                  name="active"
+                  type="checkbox"
+                  checked={this.state.active}
+                  onChange={this.handleChange}
+                />
+                Active
+              </label>
+            </div>
+            <p></p>
+            <div className="control">
+              <label className="checkbox">
+                <input
+                  name="admin"
+                  type="checkbox"
+                  checked={this.state.admin}
+                  onChange={this.handleChange}
+                />
+                Admin
+              </label>
+            </div>
+            <input type="submit" value="Submit"/>
+          </form>
+        </div>
+      )
     } 
     return (
       <p>Loading user</p>
@@ -131,4 +130,4 @@ class AdminViewUser extends Component {
   }
 }
 
-export default AdminViewUser
+export default AdminViewUserPC
