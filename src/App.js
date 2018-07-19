@@ -11,7 +11,7 @@ import MyProfile from './components/user/MyProfile'
 import ManageSop from './components/sop/ManageSop'
 import ManageUsers from './components/user/ManageUsers'
 import ViewUser from './components/user/ViewUser'
-
+import AdminViewUser from './components/user/AdminViewUser'
 
 class App extends Component {
 
@@ -27,61 +27,67 @@ class App extends Component {
     })
   }
   
+  render() {
+    return(<AdminViewUser/>)
+    // return(<ViewUser/>)
+    // return(<MyProfile/>)
+
+  }
   
 
-  render() {
-    const isAdmin = this.state.admin
-    const isLoggedIn = this.state.loggedIn
-    // if(isLoggedIn){
+//   render() {
+//     const isAdmin = this.state.admin
+//     const isLoggedIn = this.state.loggedIn
+//     // if(isLoggedIn){
       
-    // }
-    if(isAdmin && isLoggedIn){
-    return (
-      <Router>
-        <div className="App">
+//     // }
+//     if(isAdmin && isLoggedIn){
+//     return (
+//       <Router>
+//         <div className="App">
         
-          <NavbarAdmin admin={this.state.admin} isLoggedIn={this.state.loggedIn}/>
-          <Route exact path="/" render={() => <MySop updateLogin={this.updateLogin} />}/>
+//           <NavbarAdmin admin={this.state.admin} isLoggedIn={this.state.loggedIn}/>
+//           <Route exact path="/" render={() => <MySop updateLogin={this.updateLogin} />}/>
            
-          <Route exact path="/register" component={ Register } />
-          <Route exact path="/myprofile" component={ MyProfile } />
-          <Route exact path="/managesop" component={ ManageSop } />
-          <Route exact path="/manageusers" component={ ManageUsers } />
-          <Route exact path={"/user/:id"} component={ ViewUser } />
+//           <Route exact path="/register" component={ Register } />
+//           <Route exact path="/myprofile" component={ MyProfile } />
+//           <Route exact path="/managesop" component={ ManageSop } />
+//           <Route exact path="/manageusers" component={ ManageUsers } />
+//           <Route exact path={"/user/:id"} component={ ViewUser } />
       
     
-        </div>
-      </Router>
-    );
-  }
-  if(isLoggedIn && !isAdmin){
-    return (
-      <Router>
-        <div className="App">
+//         </div>
+//       </Router>
+//     );
+//   }
+//   if(isLoggedIn && !isAdmin){
+//     return (
+//       <Router>
+//         <div className="App">
         
-          <NavbarUser admin={this.state.admin} isLoggedIn={this.state.loggedIn}/>
-          <Route exact path="/" render={() => <MySop updateLogin={this.updateLogin} />}/>
+//           <NavbarUser admin={this.state.admin} isLoggedIn={this.state.loggedIn}/>
+//           <Route exact path="/" render={() => <MySop updateLogin={this.updateLogin} />}/>
            
-          <Route exact path="/register" component={ Register } />
-          <Route exact path="/myprofile" component={ MyProfile } />
+//           <Route exact path="/register" component={ Register } />
+//           <Route exact path="/myprofile" component={ MyProfile } />
           
-        </div>
-      </Router>
-    )}
-    else {
-      return (
-        <Router>
-          <div className="App">
+//         </div>
+//       </Router>
+//     )}
+//     else {
+//       return (
+//         <Router>
+//           <div className="App">
           
-            <Navbar admin={this.state.admin} isLoggedIn={this.state.loggedIn}/>
-            <Route exact path="/" render={() => <Login updateLogin={this.updateLogin} />}/>
-            <Route exact path="/register" component={ Register } />
+//             <Navbar admin={this.state.admin} isLoggedIn={this.state.loggedIn}/>
+//             <Route exact path="/" render={() => <Login updateLogin={this.updateLogin} />}/>
+//             <Route exact path="/register" component={ Register } />
            
-          </div>
-        </Router>
-      )
-    }
-}
+//           </div>
+//         </Router>
+//       )
+//     }
+// }
 }
 
 export default App;
