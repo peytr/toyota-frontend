@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://toyota-backend-rtodfuwkmw.now.sh/api',
+  baseURL: process.env.REACT_APP_BACKEND_URL,
   withCredentials: true
 })
 
