@@ -1,37 +1,44 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-// import Toyota_logo from '../img/Toyota_logo.png'
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-class Navbar extends Component {
-  render() {
+const Navbar = ({administrator, updateLogout}) => {
+    const adminLinks = [{uri: "/manageusers", text: "Manage Users"}, {uri: "/managesop", text: "Manage SOP"}]
+    
+    const userLinks = [{uri: "/allsop", text: "All SOP"}]
+    
+    const adminLinkComponents = adminLinks.map(({uri, text}, key) => 
+      <li className="nav-item" key={key}>
+      <NavLink activeClassName="active-nav-link" className="nav-link" to={uri} exact>{text}</NavLink>
+      </li>)
+   
+   const userLinkComponents = userLinks.map(({uri, text}, key) => 
+      <li className="nav-item" key={key}>
+      <NavLink activeClassName="active-nav-link" className="nav-link" to={uri}  exact>{text}</NavLink>
+      </li>)
+
     return (
-      <div>
        <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-    <div className="container">
-      <a className="navbar-brand" href="landing.html"></a>
-      <img className="logo" src={ require('../../img/Toyota_logo.png') } />
-      <h1 className="title">TOYOTA</h1>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
-        <span className="navbar-toggler-icon"></span>
-      </button>
-
-      <div className="collapse navbar-collapse" id="mobile-nav">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <a className="nav-link" href="profiles.html"> 
-            </a>
-          </li>
-        </ul>
-
-        <ul className="navbar-nav ml-auto">
-
-        </ul>
-      </div>
-    </div>
-  </nav> 
-      </div>
+            <img className="logo" src={ require('../../img/Toyota_logo.png') } />
+            <h1 className="title">TOYOTA</h1>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="mobile-nav">
+            <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <NavLink activeClassName="active-nav-link" className="nav-link" to="/" exact>My SOP</NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink activeClassName="active-nav-link" className="nav-link" to="/myprofile" exact>My Profile</NavLink>
+                </li>
+                {administrator ? adminLinkComponents : userLinkComponents}
+                <li className="nav-item">
+                  <a href="#" className="nav-link" to="/logout" onClick={updateLogout}>Log out</a>
+                </li>
+            </ul>
+          </div>
+    </nav> 
     )
-  }
 }
 
 export default Navbar

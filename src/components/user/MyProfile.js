@@ -5,7 +5,7 @@ import instance from '../api/init'
 class MyProfile extends Component {
 
   componentDidMount() {
-    instance.get('users/5b4b105fc370096ec3bd4660')
+    instance.get('users/me')
      .then((response) => {
        console.log(response);
        this.setState({email: response.data.email, firstName: response.data.firstName})
