@@ -52,30 +52,7 @@ class Register extends Component {
             <p className="lead text-center">Create New User</p>
            
             <form onSubmit={this.onSubmit.bind(this)}>
-            <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">First Name</label>
-            <div class="col-10">
-              <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
-            </div>
-            </div>
-            <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">Last Name</label>
-            <div class="col-10">
-              <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
-            </div>
-            </div>
-            <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">First Name</label>
-            <div class="col-10">
-              <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
-            </div>
-            </div>
-            <div class="form-group row">
-            <label for="example-text-input" class="col-2 col-form-label">First Name</label>
-            <div class="col-10">
-              <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"/>
-            </div>
-            </div>
+           
             <br/>
               <div className="form-group">
                 <input type="text" 

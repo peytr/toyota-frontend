@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 // import Toyota_logo from '../img/Toyota_logo.png'
 
-class Navbar extends Component {
+class NavbarAdmin extends Component {
   render() {
     return (
       <div>
@@ -24,7 +24,22 @@ class Navbar extends Component {
         </ul>
 
         <ul className="navbar-nav ml-auto">
-
+         
+          <li className="nav-item">
+           <Link className="nav-link" to="/manageusers">Manage Users</Link>
+          </li>
+          <li className="nav-item">
+           <Link className="nav-link" to="/myprofile">My Profile</Link>
+          </li>
+          <li className="nav-item">
+           <Link className="nav-link" to="/">My SOP</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/managesop">Manage SOP</Link>
+          </li>
+          <li className="nav-item">
+           <Link className="nav-link" to="/logout">Log out</Link>
+          </li>
         </ul>
       </div>
     </div>
@@ -34,4 +49,4 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar
+export default NavbarAdmin

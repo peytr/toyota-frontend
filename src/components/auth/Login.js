@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from '../api/init'
+import instance from '../api/init'
 import { Redirect } from 'react-router-dom';
 
 require('dotenv').config()
@@ -10,7 +10,6 @@ class Login extends Component {
     this.state = {
       employeeNumber: "",
       password: "", 
-      loggedIn: false,
       errors: {}
     }
   }
@@ -26,12 +25,12 @@ class Login extends Component {
       password: this.state.password,
     }
     console.log(user)
-    axios.post("/users/login", user) 
+    instance.post("/users/login", user) 
       .then(res => {
         console.log(res);
-        console.log(res.data);
-        this.setState({loggedIn: true})
-       
+        console.log(res.data.admin);
+        this.setState({loggedIn: true, admin: res.data.admin})
+        this.props.updateLogin(res.data)
         if(this.state.loggedIn = true){
          console.log("hi, you're logged in!")
        }
@@ -39,6 +38,7 @@ class Login extends Component {
       .catch(err => console.error(err))
  
   }
+  
 
   render() {
     return (
@@ -78,7 +78,7 @@ class Login extends Component {
             <br/>
             <br/>
             <div className="text-center"> 
-            <button type="submit" className="btn btn-primary">Login</button>
+            <button type="submit"  className="btn btn-primary">Login</button>
             </div>
           </form>
         </div>
