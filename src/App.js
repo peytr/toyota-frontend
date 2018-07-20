@@ -53,11 +53,11 @@ class App extends Component {
   
   render() {
     const adminRouteComponents = adminRoutes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />)
-    const forbiddenRouteComponents = adminRoutes.map(({path, component}, key) => <Route exact path={path} component={Error403} key={key} />)
+    const forbiddenOrLoginRouteComponents = adminRoutes.map(({path}, key) => this.state.loggedIn ? <Route exact path={path} component={Error403} key={key} /> : <Redirect to="/" key={key}/>)
     const userRouteComponents = userRoutes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />)
-    
+    const loginRouteComponents = userRoutes.map(({}, key) =>  <Redirect to="/" key={key}/>)
+
     if (!this.state.loaded) { return <Loader /> }
-    // if (!this.state.loggedIn) { return <Login updateLogin={this.updateLogin} /> }
     return(
       <Router>
       <div>
@@ -65,8 +65,8 @@ class App extends Component {
         <div className="container">
           <Switch>
             <Route exact path="/" render={() => (this.state.loggedIn ? ( <Redirect to="/mysop"/>) : ( <Login updateLogin={this.updateLogin} />))}/>
-            {this.state.administrator ? adminRouteComponents : forbiddenRouteComponents}
-            {userRouteComponents}
+            {this.state.administrator ? adminRouteComponents : forbiddenOrLoginRouteComponents}
+            {this.state.loggedIn ? userRouteComponents : loginRouteComponents }
             <Route component={Error404}/>
           </Switch>
         </div>
