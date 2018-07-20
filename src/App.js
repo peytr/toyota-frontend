@@ -1,87 +1,79 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Switch, BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import './App.css';
+import Header from './components//layout/Header'
 import Navbar from './components/layout/Navbar'
-import NavbarAdmin from './components/layout/NavbarAdmin'
-import NavbarUser from './components/layout/NavbarUser'
-import Register from './components/auth/Register'
 import Login from './components/auth/Login'
-import MySop from './components/sop/MySop'
-import MyProfile from './components/user/MyProfile'
-import ManageSop from './components/sop/ManageSop'
-import ManageUsers from './components/user/ManageUsers'
-import ViewUser from './components/user/ViewUser'
-
+import Loader from './components/layout/Loader'
+import Error404 from './components/errors/Error404'
+import Error403 from './components/errors/Error403'
+import axios from './api/init'
+import adminRoutes from './routes/adminRoutes'
+import userRoutes from './routes/userRoutes'
 
 class App extends Component {
-
   state = {
-    admin: false,
+    loaded: false,
+    administrator: false,
     loggedIn: false
   }
 
-  updateLogin = (data) => {
-    this.setState({
-      loggedIn: true,
-      admin: data.admin
+  componentDidMount() {
+    axios.get('auth')
+     .then((response) => {
+       this.setState({
+        loggedIn: response.data.login,
+        administrator: response.data.administrator, 
+        loaded: true})
+     })
+    .catch((error)=>{
+       console.log(error);
     })
   }
   
-  
-
-  render() {
-    const isAdmin = this.state.admin
-    const isLoggedIn = this.state.loggedIn
-    // if(isLoggedIn){
-      
-    // }
-    if(isAdmin && isLoggedIn){
-    return (
-      <Router>
-        <div className="App">
-        
-          <NavbarAdmin admin={this.state.admin} isLoggedIn={this.state.loggedIn}/>
-          <Route exact path="/" render={() => <MySop updateLogin={this.updateLogin} />}/>
-           
-          <Route exact path="/register" component={ Register } />
-          <Route exact path="/myprofile" component={ MyProfile } />
-          <Route exact path="/managesop" component={ ManageSop } />
-          <Route exact path="/manageusers" component={ ManageUsers } />
-          <Route exact path={"/user/:id"} component={ ViewUser } />
-      
-    
-        </div>
-      </Router>
-    );
+  updateLogin = (data) => {
+    console.log(data)
+    this.setState({
+      loggedIn: true,
+      administrator: data.administrator,
+      loaded: true
+  })
   }
-  if(isLoggedIn && !isAdmin){
-    return (
+
+  updateLogout = () => {
+    axios.get('/users/logout')
+    .then(() => {
+      this.setState({
+        loggedIn: false,
+        administrator: false,
+        loaded: true
+    })
+    })
+  }
+  
+  render() {
+    const adminRouteComponents = adminRoutes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />)
+    const forbiddenOrLoginRouteComponents = adminRoutes.map(({path}, key) => this.state.loggedIn ? <Route exact path={path} component={Error403} key={key} /> : <Redirect to="/" key={key}/>)
+    const userRouteComponents = userRoutes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />)
+    const loginRouteComponents = userRoutes.map(({}, key) =>  <Redirect to="/" key={key}/>)
+
+    if (!this.state.loaded) { return <Loader /> }
+    return(
       <Router>
-        <div className="App">
-        
-          <NavbarUser admin={this.state.admin} isLoggedIn={this.state.loggedIn}/>
-          <Route exact path="/" render={() => <MySop updateLogin={this.updateLogin} />}/>
-           
-          <Route exact path="/register" component={ Register } />
-          <Route exact path="/myprofile" component={ MyProfile } />
-          
+      <div>
+        { this.state.loggedIn ? <Navbar administrator={this.state.administrator} updateLogout={this.updateLogout}/> : <Header />}
+        <div className="container">
+          <Switch>
+            <Route exact path="/" render={() => (this.state.loggedIn ? ( <Redirect to="/mysop"/>) : ( <Login updateLogin={this.updateLogin} />))}/>
+            {this.state.administrator ? adminRouteComponents : forbiddenOrLoginRouteComponents}
+            {this.state.loggedIn ? userRouteComponents : loginRouteComponents }
+            <Route component={Error404}/>
+          </Switch>
         </div>
+      </div>
       </Router>
-    )}
-    else {
-      return (
-        <Router>
-          <div className="App">
-          
-            <Navbar admin={this.state.admin} isLoggedIn={this.state.loggedIn}/>
-            <Route exact path="/" render={() => <Login updateLogin={this.updateLogin} />}/>
-            <Route exact path="/register" component={ Register } />
-           
-          </div>
-        </Router>
-      )
-    }
-}
+    )
+  }
 }
 
 export default App;

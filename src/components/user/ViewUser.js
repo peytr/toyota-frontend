@@ -18,7 +18,7 @@ class ViewUser extends Component {
   render() {
     return (
       <div>
-    <h1>View User</h1>
+      <h1>View User</h1>
       <p>{this.props.match.params.id}</p>
       {/* <p>{this.state.email}</p> */}
 
