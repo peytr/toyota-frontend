@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom'
+import { Switch, BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import './App.css';
+import Header from './components//layout/Header'
 import Navbar from './components/layout/Navbar'
 import Login from './components/auth/Login'
 import Loader from './components/layout/Loader'
@@ -56,13 +57,14 @@ class App extends Component {
     const userRouteComponents = userRoutes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />)
     
     if (!this.state.loaded) { return <Loader /> }
-    if (!this.state.loggedIn) { return <Login updateLogin={this.updateLogin} /> }
+    // if (!this.state.loggedIn) { return <Login updateLogin={this.updateLogin} /> }
     return(
       <Router>
       <div>
-        <Navbar administrator={this.state.administrator} updateLogout={this.updateLogout}/>
+        { this.state.loggedIn ? <Navbar administrator={this.state.administrator} updateLogout={this.updateLogout}/> : <Header />}
         <div className="container">
           <Switch>
+            <Route exact path="/" render={() => (this.state.loggedIn ? ( <Redirect to="/mysop"/>) : ( <Login updateLogin={this.updateLogin} />))}/>
             {this.state.administrator ? adminRouteComponents : forbiddenRouteComponents}
             {userRouteComponents}
             <Route component={Error404}/>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import instance from '../api/init'
-import Header from '../layout/Header'
 
 class Login extends Component {
   constructor() {
     super()
     this.state = {
+      loggedIn: false,
       employeeNumber: "",
       password: "", 
       errors: {}
@@ -24,7 +24,10 @@ class Login extends Component {
     }
     instance.post("/users/login", user) 
       .then(res => {
-        if (res.data.success) { this.props.updateLogin(res.data) }
+        if (res.data.success) { 
+          this.setState({ loggedIn: true})
+          this.props.updateLogin(res.data) 
+          }
       })
       .catch(err => console.error(err))
  
@@ -33,7 +36,6 @@ class Login extends Component {
   render() {
     return (
     <div className="login">
-      <Header />
       <div className="container">
         <div className="row">
           <div className="col-md-8 m-auto">

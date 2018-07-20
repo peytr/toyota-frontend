@@ -26,17 +26,17 @@ const Navbar = ({administrator, updateLogout}) => {
             <div className="collapse navbar-collapse" id="mobile-nav">
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <NavLink activeClassName="active-nav-link" className="nav-link" to="/" exact>My SOP</NavLink>
+                  <NavLink activeClassName="active-nav-link" className="nav-link" to="/mysop" exact>My SOP</NavLink>
                 </li>
                 <li className="nav-item">
                   <NavLink activeClassName="active-nav-link" className="nav-link" to="/myprofile" exact>My Profile</NavLink>
                 </li>
                 {administrator ? adminLinkComponents : userLinkComponents}
                 <li className="nav-item">
-                  <a href="#" className="nav-link" to="/logout" onClick={updateLogout}>Log out</a>
+                  <a href="/" className="nav-link" to="/logout" onClick={updateLogout}>Log out</a>
                 </li>
             </ul>
-          </div>
+            </div>
     </nav> 
     )
 }
