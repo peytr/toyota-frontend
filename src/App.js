@@ -42,14 +42,12 @@ class App extends Component {
         
           <NavbarAdmin admin={this.state.admin} isLoggedIn={this.state.loggedIn}/>
           <Route exact path="/" render={() => <MySop updateLogin={this.updateLogin} />}/>
-           
           <Route exact path="/register" component={ Register } />
           <Route exact path="/myprofile" component={ MyProfile } />
           <Route exact path="/managesop" component={ ManageSop } />
           <Route exact path="/manageusers" component={ ManageUsers } />
           <Route exact path={"/user/:id"} component={ ViewUser } />
       
-    
         </div>
       </Router>
     );
@@ -60,8 +58,7 @@ class App extends Component {
         <div className="App">
         
           <NavbarUser admin={this.state.admin} isLoggedIn={this.state.loggedIn}/>
-          <Route exact path="/" render={() => <MySop updateLogin={this.updateLogin} />}/>
-           
+          <Route exact path="/" render={() => <MySop updateLogin={this.updateLogin} />}/>      
           <Route exact path="/register" component={ Register } />
           <Route exact path="/myprofile" component={ MyProfile } />
           
