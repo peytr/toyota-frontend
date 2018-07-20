@@ -16,6 +16,8 @@ const adminRoutes = [
 }, {
   path: '/users/:id',
   component: ViewUser,
-}];
+},
+
+];
 
 export default adminRoutes
