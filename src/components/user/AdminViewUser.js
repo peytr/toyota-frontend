@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from '../api/init'
 import instance from '../api/init'
 
 class AdminViewUser extends Component {
@@ -7,7 +6,14 @@ class AdminViewUser extends Component {
     super(props)
 
     this.state = {
-      user: null
+      user: null,
+      firstName: null,
+      lastName: null,
+      employeeNumber: null,
+      email: null,
+      department: null,
+      active: true,
+      administrator: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -18,6 +24,8 @@ class AdminViewUser extends Component {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
+
+    this.setState({[event.target.name]: event.target.value})
 
     this.setState({
       [name]: value
@@ -30,16 +38,17 @@ class AdminViewUser extends Component {
 
     // on submit form data to update user in database
     const user = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName
-      // employeeNumber: this.state.employeeNumber,
-      // email: this.state.email,
-      // department: this.state.department
+      firstName: this.state.firstName || this.state.user.firstName,
+      lastName: this.state.lastName  || this.state.user.lastName,
+      employeeNumber: this.state.employeeNumber  || this.state.user.employeeNumber,
+      email: this.state.email  || this.state.user.email,
+      department: this.state.department  || this.state.user.department,
+      active: this.state.active  || this.state.user.active,
+      administrator: this.state.administrator  || this.state.user.administrator
     }
     console.log(user)
-    axios.post("/users/5b4c221a7c75af5f989a3e35", user) 
+    instance.patch("/users/5b4c221a7c75af5f989a3e35", user) 
     .then(res => {
-      console.log(res);
       console.log(res.data);
     })
     .catch(err => console.error(err))
@@ -73,7 +82,7 @@ class AdminViewUser extends Component {
                       className='form-control form-control-md'
                       type='text'
                       name='firstName'
-                      value={this.state.firstName}
+                      value={this.state.user.firstName}
                       onChange={this.handleChange}
                       placeholder={this.state.user.firstName}
                       />
@@ -134,6 +143,32 @@ class AdminViewUser extends Component {
                       placeholder={this.state.user.department}
                       />
                   </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="checkbox">
+                    <input
+                      className='form-control form-control-md'
+                      name="active"
+                      type="checkbox"
+                      checked={this.state.active}
+                      onChange={this.handleChange}
+                    />
+                    Active
+                  </label>
+                </div>
+                <p></p>
+                <div className="form-group">
+                  <label className="checkbox">
+                    <input
+                      className='form-control form-control-md'
+                      name="administrator"
+                      type="checkbox"
+                      checked={this.state.administrator}
+                      onChange={this.handleChange}
+                    />
+                    Admin
+                  </label>
                 </div>
 
                 <div className="field">
