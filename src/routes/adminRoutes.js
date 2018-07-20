@@ -1,7 +1,9 @@
 import ManageSop from '../components/sop/ManageSop'
+import CreateSop from '../components/sop/CreateSop'
 import ManageUsers from '../components/user/ManageUsers'
 import ViewUser from '../components/user/ViewUser'
 import Register from '../components/auth/Register'
+
 
 const adminRoutes = [
 {
@@ -16,6 +18,9 @@ const adminRoutes = [
 }, {
   path: '/users/:id',
   component: ViewUser,
+}, {
+  path: '/sops/create',
+  component: CreateSop,
 },
 
 ];
