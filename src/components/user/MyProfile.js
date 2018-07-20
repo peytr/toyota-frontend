@@ -44,7 +44,9 @@ user: ""
     </div>
 
     <div class="btn-toolbar text-center">
+    <a href= "http://localhost:3000/password">
       <button type="button" id="btnSubmit" class="btn btn-primary btn-sm butty">Change Password</button>
+    </a>
       <a href="mailto:dave@toyota.com.ay?subject=Please update my details on SOP Portal">
         <button type="button" id="btnCancel" class="btn btn-primary btn-sm butty">Request Update</button>
       </a> 
