@@ -9,8 +9,7 @@ user: ""
 }
 
   componentDidMount() {
-
-    instance.get('users/current')
+    instance.get('users/me')
      .then((response) => {
        console.log(response);
        this.setState({
