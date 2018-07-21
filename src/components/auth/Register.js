@@ -80,7 +80,8 @@ class Register extends Component {
     }
     return isError
   }
-  
+
+  //TODO: edit user still submits if there is errors even though error messages are raised
   onSubmit(e) {
     e.preventDefault()
     const err = this.validate()
