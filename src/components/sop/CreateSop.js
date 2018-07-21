@@ -41,7 +41,7 @@ class CreateSop extends React.Component {
   }
 
   fileUpload(file, title, department, version, author, createdAt){
-    const url = 'http://localhost:5000/api/sops';
+    const url = `${process.env.REACT_APP_BACKEND_URL}/sops`;
     const formData = new FormData();
     formData.append('file', file)
     formData.append('title', title)
@@ -63,7 +63,7 @@ class CreateSop extends React.Component {
       <form onSubmit={this.onFormSubmit}>
 
       <div className="form-group">
-        <label for="title">Title</label>
+        <label htmlFor="title">Title</label>
         <input type="text" 
                 className="form-control" 
                 name="title"
@@ -73,7 +73,7 @@ class CreateSop extends React.Component {
       </div>
       
       <div className="form-group">
-        <label for="sop-name">Department</label>
+        <label htmlFor="sop-name">Department</label>
         <select className="form-control" name="department" id="department"
                 value={this.state.department} 
                 onChange={this.handleInputChange}>
@@ -88,7 +88,7 @@ class CreateSop extends React.Component {
       </div>
 
       <div className="form-group">
-        <label for="version">Version</label>
+        <label htmlFor="version">Version</label>
         <input type="number" 
               className="form-control" 
               id="version"
@@ -100,7 +100,7 @@ class CreateSop extends React.Component {
       </div>
 
       <div className="form-group">
-        <label for="author">Author</label>
+        <label htmlFor="author">Author</label>
         <input type="text" 
               name="author" id="author"
               className="form-control" 
@@ -110,7 +110,7 @@ class CreateSop extends React.Component {
 
 
       <div className="form-group">
-        <label for="createdAt">Date Created</label>
+        <label htmlFor="createdAt">Date Created</label>
         <input type="date" className="form-control" id="createdAt" name="createdAt"
         value={this.state.createdAt} 
         onChange={this.handleInputChange}
