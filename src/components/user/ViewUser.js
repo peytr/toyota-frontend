@@ -16,25 +16,78 @@ class ViewUser extends Component {
       administrator: false
     }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  handleChange(event) {
-    const target = event.target;
+  onChange(e) {
+    const target = e.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
 
-    this.setState({[event.target.name]: event.target.value})
+    this.setState({[e.target.name]: e.target.value})
 
     this.setState({
       [name]: value
     });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  validate = () => {
+    let isError = false
+    const errors = {
+      firstNameError: "",
+      lastNameError: "",
+      employeeNumberError: "",
+      emailError: "",
+      departmentError: "",
+      passwordError: "",
+      password2Error: ""
+    }
+    if (this.state.firstName.length < 3 || this.state.firstName.length > 30) {
+      isError = true
+      errors.firstNameError = 'First name must be between 2 and 30 characters'
+    }
+
+    if (this.state.lastName.length < 3 || this.state.lastName.length > 30) {
+      isError = true
+      errors.lastNameError = 'Last name must be between 2 and 30 characters'
+    }
+
+    if (this.state.employeeNumber.length !== 6) {
+      isError = true
+      errors.employeeNumberError = 'Please enter a valid employee number'
+    }
+
+    if (this.state.email.length < 2 || this.state.email.indexOf("@") === -1 || this.state.email.indexOf(".com.au") === -1) {
+      isError = true
+      errors.emailError = 'Please enter a valid email address'
+    }
+
+    if (isError) {
+      this.setState(errors)
+    }
+    return isError
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
     console.log(this.state);
+
+    const err = this.validate()
+    if (!err) {
+
+      // clear form
+      this.setState({
+        firstName: this.state.firstName,
+        firstNameError: "",
+        lastName: this.state.lastName,
+        lastNameError: "",
+        employeeNumber: this.state.employeeNumber,
+        employeeNumberError: "",
+        email: this.state.email,
+        emailError: "",
+        department: this.state.department
+      })
 
     // on submit form data to update user in database
     const user = {
@@ -53,6 +106,7 @@ class ViewUser extends Component {
     })
     .catch(err => console.error(err))
   }
+}
 
   componentDidMount() {
     instance.get(`/users/${this.props.match.params.id}`)
@@ -66,8 +120,7 @@ class ViewUser extends Component {
         email: response.data.email,
         department: response.data.department,
         active: response.data.active,
-        administrator: response.data.administrator,
-        
+        administrator: response.data.administrator
        });
      })
     .catch((error) => {
@@ -86,7 +139,7 @@ class ViewUser extends Component {
                 <div className="col-md-8 m-auto">
                   <br/>
                   <p className="lead text-center">Update User</p>
-                  <form className='form' onSubmit={this.handleSubmit}>
+                  <form className='form' onSubmit={this.onSubmit}>
                     <div className='form-group'>
                       <label className='label'>First Name</label>
                       <div className='control'>
@@ -95,9 +148,9 @@ class ViewUser extends Component {
                           type='text'
                           name='firstName'
                           value={this.state.firstName}
-                          onChange={this.handleChange}
-                          // placeholder={this.state.user.firstName}
+                          onChange={this.onChange}
                           />
+                      <div className="form-alert">{this.state.firstNameError}</div>
                       </div>
                     </div>
 
@@ -109,9 +162,9 @@ class ViewUser extends Component {
                           type='text'
                           name='lastName'
                           value={this.state.lastName}
-                          onChange={this.handleChange}
-                          // placeholder={this.state.user.lastName}
+                          onChange={this.onChange}
                           />
+                          <div className="form-alert">{this.state.lastNameError}</div>
                       </div>
                     </div>
 
@@ -121,11 +174,11 @@ class ViewUser extends Component {
                         <input
                           className='form-control form-control-md'
                           type='text'
-                          name='lastName'
+                          name='employeeNumber'
                           value={this.state.employeeNumber}
-                          onChange={this.handleChange}
-                          // placeholder={this.state.user.employeeNumber}
+                          onChange={this.onChange}
                           />
+                          <div className="form-alert">{this.state.employeeNumberError}</div>
                       </div>
                     </div>
 
@@ -135,17 +188,20 @@ class ViewUser extends Component {
                         <input
                           className='form-control form-control-md'
                           type='text'
-                          name='lastName'
+                          name='email'
                           value={this.state.email}
-                          onChange={this.handleChange}
-                          // placeholder={this.state.user.email}
+                          onChange={this.onChange}
                           />
+                          <div className="form-alert">{this.state.emailError}</div>
                       </div>
                     </div>
 
                      <div className="form-group">
                       <label className='label'>Department</label>
-                      <select className="form-control" name="department" value={this.state.department} onChange={this.handleChange.bind(this)}>
+                      <select 
+                      className="form-control" 
+                      name="department" value={this.state.department} 
+                      onChange={this.onChange.bind(this)}>
                         <option>Product Planning & Pricing</option>
                         <option>Product Design</option>
                         <option>Regulations, Conversions & Accessories</option>
@@ -162,7 +218,7 @@ class ViewUser extends Component {
                           name="active"
                           type="checkbox"
                           checked={this.state.active}
-                          onChange={this.handleChange}
+                          onChange={this.onChange}
                         />
                         Active
                       </label>
@@ -175,7 +231,7 @@ class ViewUser extends Component {
                           name="administrator"
                           type="checkbox"
                           checked={this.state.administrator}
-                          onChange={this.handleChange}
+                          onChange={this.onChange}
                         />
                         Administrator
                       </label>
