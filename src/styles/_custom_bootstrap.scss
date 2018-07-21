@@ -5,3 +5,14 @@ $toyota-red: #d71921;
 $theme-colors: (
   primary: $toyota-red
 ) !default;
+
+
+// styling for form validation alerts (frontend)
+.form-alert {
+  color: $toyota-red;
+}
+
+// form checkbox label
+.checkbox {
+  margin-right: 5px;
+}
