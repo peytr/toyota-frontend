@@ -14,7 +14,7 @@ class ManageUsers extends Component {
        this.setState({
          users: response.data
         })
-       console.log(this.state)
+      //  console.log(this.state)
      })
     .catch((error)=>{
        console.log(error);
@@ -27,7 +27,7 @@ class ManageUsers extends Component {
       <div>
         <h1>Manage Users </h1>
         <ListWrapper {...this.state} />
-        <Link to="/register"><button className="btn btn-primary">Create New User</button></Link>
+        <Link to="/register"><button className="btn btn-secondary">Create New User</button></Link>
       </div>
     )
   }

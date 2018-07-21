@@ -15,7 +15,7 @@ user: ""
        this.setState({
          user: response.data
         })
-       console.log(this.state)
+      //  console.log(this.state)
      })
     .catch((error)=>{
        console.log(error);
@@ -34,21 +34,21 @@ user: ""
       <h3 className="profile-title">Profile</h3>
     </div>    
     <div className="details">
-      <ul class="list-group">
-        <li class="list-group-item 1">First Name:<span class="tab-space1">{this.state.user.firstName}</span> </li>
-        <li class="list-group-item 2">Second Name:<span class="tab-space2"> {this.state.user.lastName}</span></li>
-        <li class="list-group-item 3">Email:<span class="tab-space3"> {this.state.user.email}</span></li>
-        <li class="list-group-item 4">Department:<span class="tab-space4"> {this.state.user.department}</span></li>
-        <li class="list-group-item 5">Employee Number:<span class="tab-space5"> {this.state.user.employeeNumber}</span></li>
+      <ul className="list-group">
+        <li className="list-group-item 1">First Name:<span className="tab-space1">{this.state.user.firstName}</span> </li>
+        <li className="list-group-item 2">Second Name:<span className="tab-space2"> {this.state.user.lastName}</span></li>
+        <li className="list-group-item 3">Email:<span className="tab-space3"> {this.state.user.email}</span></li>
+        <li className="list-group-item 4">Department:<span className="tab-space4"> {this.state.user.department}</span></li>
+        <li className="list-group-item 5">Employee Number:<span className="tab-space5"> {this.state.user.employeeNumber}</span></li>
       </ul>
     </div>
 
-    <div class="btn-toolbar text-center">
+    <div className="btn-toolbar text-center">
     <a href= "http://localhost:3000/password">
-      <button type="button" id="btnSubmit" class="btn btn-primary btn-sm butty">Change Password</button>
+      <button type="button" id="btnSubmit" className="btn btn-secondary btn-sm butty">Change Password</button>
     </a>
       <a href="mailto:dave@toyota.com.ay?subject=Please update my details on SOP Portal">
-        <button type="button" id="btnCancel" class="btn btn-primary btn-sm butty">Request Update</button>
+        <button type="button" id="btnCancel" className="btn btn-secondary btn-sm butty">Request Update</button>
       </a> 
     </div>
   </div> 

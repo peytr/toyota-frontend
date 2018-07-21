@@ -121,7 +121,7 @@ class CreateSop extends React.Component {
         <input type="file" className="form-control-file" onChange={this.onChange} />
       </div>
 
-      <button className="btn btn-primary" type="submit">Create SOP</button>
+      <button className="btn btn-secondary" type="submit">Create SOP</button>
       </form>
    )
   }

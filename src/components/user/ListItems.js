@@ -1,14 +1,25 @@
 import React, { Component, Fragment } from 'react'
-import ListWrapper from './ListWrapper.js'
+// import ListWrapper from './ListWrapper.js'
 import { Link } from 'react-router-dom'
 
 class ListItems extends Component {
 
+    constructor( props ) {
+        super( props );
+    
+        this.keyCount = 0;
+        this.getKey = this.getKey.bind(this);
+    }
+    
+    getKey(){
+        return this.keyCount++;
+    }
+
     makeUserObjectsIntoListHtml(arrayOfUsers){
-        console.log(arrayOfUsers)
+        // console.log(arrayOfUsers)
         const arrayOfListObjects = arrayOfUsers.map((user, index) => {
             return (
-                <tr>
+                <tr key={this.getKey()}>
                     {/* <td>{user._id}</td> */}
                     <td>{user.firstName}</td>
                     <td>{user.lastName}</td>
@@ -18,7 +29,7 @@ class ListItems extends Component {
                     <td>{user.administrator ? "Yes" : "No"}</td>
                     <td>{user.active ? "Yes" : "No"}</td>
                     <td>
-                    <Link to={`/users/${user._id}`}><button className="btn btn-primary btn-sm">Update User</button></Link>
+                    <Link to={`/users/${user._id}`}><button className="btn btn-secondary btn-sm">Update User</button></Link>
                       {/* <Link to={`/users/${user._id}`}>
                         <button type="button">
                            View User
@@ -33,10 +44,9 @@ class ListItems extends Component {
 
     render(){
         const listElements = this.makeUserObjectsIntoListHtml(this.props.users)
-        console.log(listElements)
-
-        console.log("LISTITEMS")
-        console.log(this.props)
+        // console.log(listElements)
+        // console.log("LISTITEMS")
+        // console.log(this.props)
         return (
             <Fragment>
                 {listElements}
