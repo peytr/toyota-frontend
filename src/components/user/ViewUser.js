@@ -144,35 +144,21 @@ class ViewUser extends Component {
                     </div>
 
                      <div className="form-group">
-                     <label className='label'>Department</label>
-                <select className="form-control" name="department" value={this.state.department} onChange={this.handleChange.bind(this)}>
-                  <option>Product Planning & Pricing</option>
-                  <option>Product Design</option>
-                  <option>Regulations, Conversions & Accessories</option>
-                  <option>Vehicle Evaluation</option>
-                  <option>Connected Vehicle Services</option>
-                  <option>Technical administration</option>
-                </select>
-              </div>
-
-                    {/* <div className='form-group'>
                       <label className='label'>Department</label>
-                      <div className='control'>
-                        <input
-                          className='form-control form-control-md'
-                          type='text'
-                          name='lastName'
-                          value={this.state.department}
-                          onChange={this.handleChange}
-                          // placeholder={this.state.user.department}
-                          />
-                      </div>
-                    </div> */}
+                      <select className="form-control" name="department" value={this.state.department} onChange={this.handleChange.bind(this)}>
+                        <option>Product Planning & Pricing</option>
+                        <option>Product Design</option>
+                        <option>Regulations, Conversions & Accessories</option>
+                        <option>Vehicle Evaluation</option>
+                        <option>Connected Vehicle Services</option>
+                        <option>Technical administration</option>
+                      </select>
+                    </div>
 
                     <div className="form-group">
-                      <label className="checkbox">
+                      <label className="checkbox-label">
                         <input
-                          className='form-control form-control-md'
+                          className='checkbox'
                           name="active"
                           type="checkbox"
                           checked={this.state.active}
@@ -183,15 +169,15 @@ class ViewUser extends Component {
                     </div>
                     <p></p>
                     <div className="form-group">
-                      <label className="checkbox">
+                      <label className="checkbox-label">
                         <input
-                          className='form-control form-control-md'
+                          className='checkbox'
                           name="administrator"
                           type="checkbox"
                           checked={this.state.administrator}
                           onChange={this.handleChange}
                         />
-                        Admin
+                        Administrator
                       </label>
                     </div>
 
@@ -199,7 +185,7 @@ class ViewUser extends Component {
                       <div className="control">
                         <input
                           type="submit"
-                          value="Edit User"
+                          value="Update User"
                           className="btn btn-primary"
                         />
                       </div>
