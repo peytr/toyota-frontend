@@ -48,7 +48,7 @@ class ManageSop extends Component {
     return (
       <div>
         <h1>Manage SOPs</h1>
-        <Link to="/sops/create"><button className="btn btn-primary">CREATE</button></Link>
+        <Link to="/sops/create"><button className="btn btn-secondary">CREATE</button></Link>
         <table className="table table-hover">
           <thead>
             <tr>

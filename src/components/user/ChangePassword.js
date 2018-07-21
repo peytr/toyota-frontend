@@ -105,7 +105,7 @@ class ChangePassword extends Component {
                         <input
                           type="submit"
                           value="Submit"
-                          className="btn btn-primary"
+                          className="btn btn-secondary"
                         />
                       </div>
                     </div>

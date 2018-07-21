@@ -186,7 +186,7 @@ class ViewUser extends Component {
                         <input
                           type="submit"
                           value="Update User"
-                          className="btn btn-primary"
+                          className="btn btn-secondary"
                         />
                       </div>
                     </div>
