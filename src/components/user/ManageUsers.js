@@ -25,19 +25,9 @@ class ManageUsers extends Component {
   render() {
     return (
       <div>
-    <h1>Manage your Users </h1>
-    <ListWrapper {...this.state} />
-    <Link to="/register">
-        <button type="button">
-              Create new user
-        </button>
-     </Link>
-     <Link to="/user/5b4b105fc370096ec3bd4660">
-        <button type="button">
-            User 1
-        </button>
-    </Link>
-      
+        <h1>Manage Users </h1>
+        <ListWrapper {...this.state} />
+        <Link to="/register"><button className="btn btn-primary">Create New User</button></Link>
       </div>
     )
   }

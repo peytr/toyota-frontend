@@ -5,17 +5,18 @@ const ListWrapper = (props) => {
 
     return (
         <Fragment>
-            <table>
+            <br/>
+            <table className="table table-hover">
                 <thead>
                     <tr>
-                        {/* <th>ID</th> */}
                         <th>First name</th>
                         <th>Last name</th>
                         <th>Employee #</th>
                         <th>Email</th>
                         <th>Department</th>
-                        <th>Administrator</th>
+                        <th>Admin</th>
                         <th>Active</th>
+                        <th>Details</th>
                     </tr>
                 </thead>
                 <tbody>

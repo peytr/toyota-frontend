@@ -15,14 +15,15 @@ class ListItems extends Component {
                     <td>{user.employeeNumber}</td>
                     <td>{user.email}</td>
                     <td>{user.department}</td>
-                    <td>{user.administrator}</td>
-                    <td>{user.active}</td>
+                    <td>{user.administrator ? "Yes" : "No"}</td>
+                    <td>{user.active ? "Yes" : "No"}</td>
                     <td>
-                      <Link to={`/users/${user._id}`}>
+                    <Link to={`/users/${user._id}`}><button className="btn btn-primary btn-sm">Update User</button></Link>
+                      {/* <Link to={`/users/${user._id}`}>
                         <button type="button">
                            View User
                         </button>
-                      </Link>
+                      </Link> */}
                     </td>
                 </tr>
             )
