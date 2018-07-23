@@ -1,30 +1,28 @@
 import React, { Component } from 'react'
 import Loader from '../layout/Loader'
 import axios from '../api/init'
+import { Link } from 'react-router-dom'
 import Multiselect from 'react-widgets/lib/Multiselect'
-import 'react-widgets/dist/css/react-widgets.css';
 import ReactSvgPieChart from "react-svg-piechart"
-import { post } from 'axios';
+import 'react-widgets/dist/css/react-widgets.css'
 
 class EditSop extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      sop: null,
       loaded: false,
+      sop: null,
+      sopVersion: null,
+      sopTitle: null,
+      sopCurrentVersion: null,
+      sopPreviousVersions: null,
+      usersRead: [],
       usersUnread: [],
       usersSelectable: [],
       selected: [],
-      pieData: [],
-      file: null,
-      author: '',
-      createdAt: ''
+      successMessage: false
     }
     this.onUsersFormSubmit = this.onUsersFormSubmit.bind(this)
-    this.onNewVersionFormSubmit = this.onNewVersionFormSubmit.bind(this)
-    this.onChange = this.onChange.bind(this)
-    this.fileUpload = this.fileUpload.bind(this)
-    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   componentDidMount() {
@@ -32,10 +30,15 @@ class EditSop extends Component {
       .then((response) => {
         this.setState({
           sop: response.data.sop,
-          loaded: true,
+          sopVersion: response.data.sop.version,
+          sopTitle: response.data.sop.title,
+          sopCurrentVersion: response.data.sop.currentVersion,
+          sopPreviousVersions: response.data.sop.previousVersions,
+          sopAwsPath: response.data.sop.currentVersion.awsPath,
+          usersRead: response.data.sop.currentVersion.usersRead,
           usersUnread: response.data.usersUnread,
           usersSelectable: response.data.usersSelectable,
-          pieData: response.data.sop.currentVersion.pieData
+          loaded: true
         })
       })
     .catch((error)=>{
@@ -72,140 +75,134 @@ class EditSop extends Component {
           selected: []
         }
       }))
-    } })
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
-    this.setState({
-      [name]: value
-    });
-  }
-
-  onNewVersionFormSubmit(e){
-    e.preventDefault()
-    const {file, author, createdAt} = this.state
-    this.fileUpload(file, author, createdAt).then((response)=>{
-      console.log(response.data);
-    })
+    }})
   }
 
   onChange(e) {
     this.setState({file:e.target.files[0]})
   }
 
-  fileUpload(file, author, createdAt){
-    const url = `${process.env.REACT_APP_BACKEND_URL}/sops/addversion/${this.props.match.params.id}`;
-    const formData = new FormData();
-    formData.append('file', file)
-    formData.append('author', author)
-    formData.append('createdAt', createdAt)
-    const config = {
-        withCredentials: true,
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
-    }
-    return post(url, formData, config)
-  }
-
   render() {
     if (!this.state.loaded) { return(<Loader/>)}
-    const previousSops = this.state.sop.previousVersions.map((sop, i) => <tr><td>{sop.version}</td><td>{sop.createdAt}</td><td>{sop.author}</td><td>{sop.awsPath}</td></tr>)
-    const usersRead = this.state.sop.currentVersion.usersRead.map( (user, i) => <li key={i}>{user.fullName}</li>)
-    const usersUnread = this.state.usersUnread.map( (user, i) => <li key={i}>{user.fullName} <button onClick={() => this.onRemoveUser(user)}>Remove</button></li>)
+    const previousSops = this.state.sopPreviousVersions.map((sop, i) => <tr key={i}><td>{sop.version}</td><td>{sop.createdAt}</td><td>{sop.author}</td><td>{sop.awsPath}</td></tr>)
+    const usersRead = this.state.usersRead.map( (user, i) => <div className="list-group-item" key={i}>{user.fullName}</div>)
+    const usersUnread = this.state.usersUnread.map( (user, i) => <div className="list-group-item" key={i}>{user.fullName} <button onClick={() => this.onRemoveUser(user)}>Remove</button></div>)
+    const pieData = [
+      {
+          "title": "Read",
+          "value": this.state.usersRead.length,
+          "color": "green"
+      },
+      {
+          "title": "Unread",
+          "value": this.state.usersUnread.length,
+          "color": "red"
+      }
+  ]
     return(
       <div>
-        <dl className="row data-wrapper3">
-          <dt className="col-sm-3">Title</dt>
-          <dd className="col-sm-9">{this.state.sop.title}</dd>
+        <div className="data-wrapper3">
+          <h3 className="solid-heading">SOP - Current Version</h3>
+          <dl className="row">
+            <dt className="col-sm-3">Title</dt>
+            <dd className="col-sm-9">{this.state.sop.title}</dd>
+            <dt className="col-sm-3">Department</dt>
+            <dd className="col-sm-9">{this.state.sop.department}</dd>
+          </dl>
+          <hr />
+          <dl className="row">
+            <dt className="col-sm-3">Author</dt>
+            <dd className="col-sm-9">{this.state.sop.currentVersion.author}</dd>
+            <dt className="col-sm-3">Date Created</dt>
+            <dd className="col-sm-9">{this.state.sop.currentVersion.createdAt}</dd>
+            <dt className="col-sm-3">Latest Version</dt>
+            <dd className="col-sm-9">{this.state.sop.currentVersion.version}</dd>
+          </dl>
+          
+          <hr />
 
-          <dt className="col-sm-3">Department</dt>
-          <dd className="col-sm-9">{this.state.sop.department}</dd>
-
-          <dt className="col-sm-3">Author</dt>
-          <dd className="col-sm-9">{this.state.sop.currentVersion.author}</dd>
-
-          <dt className="col-sm-3">Date Created</dt>
-          <dd className="col-sm-9">{this.state.sop.currentVersion.createdAt}</dd>
-
-          <dt className="col-sm-3">Latest Version</dt>
-          <dd className="col-sm-9">{this.state.sop.currentVersion.version}</dd>
-       </dl>
-
-        <div className="row data-wrapper3">
-          <div className="col-sm-8">
-            <dl className="row">
-            <dt className="col-sm-4">Users Viewed</dt>
-            <dd className="col-sm-8">{this.state.sop.currentVersion.summaryStats.read}</dd>
-
-            <dt className="col-sm-4">Users Not Viewed</dt>
-            <dd className="col-sm-8">{this.state.sop.currentVersion.summaryStats.unread}</dd>
-
-            <dt className="col-sm-4">Users Required To View</dt>
-            <dd className="col-sm-8">{this.state.sop.currentVersion.summaryStats.total}</dd>
-            </dl>
+          <div className="row">
+            <div className="col-sm-8">
+              <dl className="row">
+                <dt className="col-sm-4 ">Users Viewed</dt>
+                <dd className="col-sm-8">{this.state.usersRead.length}</dd>
+                <dt className="col-sm-4">Users Not Viewed</dt>
+                <dd className="col-sm-8">{this.state.usersUnread.length}</dd>
+                <dt className="col-sm-4">Users Required To View</dt>
+                <dd className="col-sm-8">{this.state.usersRead.length + this.state.usersUnread.length}</dd>
+              </dl>
+            </div>
+            <div className="col-sm-3">
+              <ReactSvgPieChart data={pieData} />
+            </div>
           </div>
-          <div className="col-sm-4">
-            <ReactSvgPieChart data={this.state.sop.currentVersion.pieData} />
-          </div>
+          
+          <hr />
+          
+            <div className="card">
+              <div className="card-header" id="SopEmployees" data-toggle="collapse" data-target="#employees" aria-expanded="true" aria-controls="employees">
+                    <strong>+ Manage Users Required to View this SOP</strong>
+              </div>
+              <div id="employees" className="collapse" aria-labelledby="SopEmployees" data-parent="#accordion">
+                <div className="card-body">
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="list-group">
+                        <div className="list-group-item list-group-item-light">Users Read</div>
+                        {usersRead}
+                      </div>
+                    </div>
+                    <div className="col-md-6">
+                      <div className="list-group">
+                        <div className="list-group-item list-group-item-light">Users Unread</div>
+                        {usersUnread}
+                      </div>
+                    </div>
+                  </div>
+                <br />
+                <form className="list-group" onSubmit={this.onUsersFormSubmit}>
+                  <div className="list-group-item list-group-item-light">Add users required to read this SOP</div>
+                  <div className="list-group-item text-right">
+                    <Multiselect
+                      className="col-xs-9"
+                      data={this.state.usersSelectable}
+                      value={this.state.selected}
+                      valueField='_id'
+                      textField='fullName'
+                      groupBy='department'
+                      multiple="true"
+                      caseSensitive={false}
+                      minLength={3}
+                      filter='contains'
+                      name='test'
+                      id='test'
+                      onChange={selected => this.setState({ selected })}
+                    />
+                    <button className="btn btn-light " type="submit">Add Users </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            </div>          
+
+        <hr/>
+
+        <div className="d-flex flex-wrap justify-content-around">
+          <Link to="#"><button className="btn btn-success">Edit details of SOP</button></Link>
+          <Link to={
+            {
+              pathname: `/sops/${this.props.match.params.id}/addversion`,
+              state: {sop: this.state.sop}
+            }}> <button className="btn btn-success">Add New Version of SOP</button> </Link>
+          <button className="btn btn-danger">Delete SOP</button>
         </div>
-      <div className="data-wrapper3">
-        <p> Users Read </p>
-        <ul>{usersRead}</ul>
-        <p> Users Unread </p>
-        <ul>{usersUnread}</ul>
 
-        <form onSubmit={this.onUsersFormSubmit}>
-          <Multiselect
-            data={this.state.usersSelectable}
-            value={this.state.selected}
-            valueField='_id'
-            textField='fullName'
-            groupBy='department'
-            multiple="true"
-            caseSensitive={false}
-            minLength={3}
-            filter='contains'
-            name='test'
-            id='test'
-            onChange={selected => this.setState({ selected })}
-          />
-          <button className="btn btn-success" type="submit">Add Users </button>
-        </form>
-      </div>
-      <div className="data-wrapper3">
-        <form onSubmit={this.onNewVersionFormSubmit}>
-          <div className="form-group">
-            <label htmlFor="author">Author</label>
-            <input type="text" 
-                  name="author" id="author"
-                  className="form-control" 
-                  value={this.state.author} 
-                  onChange={this.handleInputChange} />
-          </div>
+        <hr/>
 
-
-          <div className="form-group">
-            <label htmlFor="createdAt">Date Created</label>
-            <input type="date" className="form-control" id="createdAt" name="createdAt"
-            value={this.state.createdAt} 
-            onChange={this.handleInputChange}
-            />
-          </div>
-
-          <div className="form-group">
-            <input type="file" className="form-control-file" onChange={this.onChange} />
-          </div>
-
-          <button className="btn btn-success" type="submit">Add SOP Version</button>
-          </form>
       </div>
 
       <div className="data-wrapper3">
-        <h3>Previous Versions</h3>
+        <h3 className="solid-heading">SOP - Previous Versions</h3>
         <table className="table">
           <thead>
             <tr>
@@ -219,7 +216,6 @@ class EditSop extends Component {
             {previousSops}
           </tbody>
         </table>
-  
       </div>
     </div>
     )

@@ -52,7 +52,7 @@ class MySop extends Component {
   render() {
     const readSops = this.state.readSops.map((sop, i) => <li key={i}>{sop.title}</li>)
     const unreadSops = this.state.unreadSops.map((sop, i)=> <li key={i}>{sop.title}  <button onClick={() => this.onReadSop(sop)}> Mark As Read </button> </li>)
-    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li key={i}>{sop.title}  <button> Mark As Read </button> </li>)
+    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li key={i}>{sop.title}  <button onClick={() => this.onReadSop(sop)}> Mark As Read </button> </li>)
 
     if (!this.state.loaded) { return(<Loader/>)}
 
