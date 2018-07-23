@@ -74,9 +74,9 @@ class AddSopVersion extends React.Component {
     if (!this.state.loaded) { return(<Loader/>)}
     return (
       
-      <div className="data-wrapper3">
-        {this.state.successMessage}
+      <div className="data-wrapper4">
         <h3 className="solid-heading">SOP - Upload New Version</h3>
+        <br/>
         <dl className="row">
           <dt className="col-sm-3">Title</dt>
           <dd className="col-sm-9">{this.state.sop.title}</dd>
@@ -108,8 +108,10 @@ class AddSopVersion extends React.Component {
           <div className="form-group">
             <input type="file" className="form-control-file" onChange={this.onChange} />
           </div>
-
-          <button className="btn btn-secondary" type="submit">Add SOP Version</button>
+        
+          <div className="text-center">
+            <button className="btn btn-secondary" type="submit">Add SOP Version</button>
+          </div>
         </form>
         {this.state.fireRedirect && <Redirect to={`/sops/${this.props.match.params.id}`} />}
       </div>
