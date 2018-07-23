@@ -1,19 +1,31 @@
 import React from 'react'
-import axios, { post } from 'axios';
+import { post } from 'axios';
+import Loader from '../layout/Loader'
+import { Redirect } from 'react-router-dom'
 
 class AddSopVersion extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
       file: null,
-      version: '',
       author: '',
-      createdAt: ''
+      createdAt: '',
+      loaded: false,
+      hello: '',
+      sop: null,
+      fireRedirect: false
     }
     this.onFormSubmit = this.onFormSubmit.bind(this)
     this.onChange = this.onChange.bind(this)
     this.fileUpload = this.fileUpload.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  componentDidMount() {
+    this.setState({
+      sop: this.props.location.state.sop,
+      loaded: true,
+    })
   }
 
   handleInputChange(event) {
@@ -28,17 +40,23 @@ class AddSopVersion extends React.Component {
 
   onFormSubmit(e){
     e.preventDefault()
-    const {file, title, department, version, author, createdAt} = this.state
-    this.fileUpload(file, title, department, version, author, createdAt).then((response)=>{
-      console.log(response.data);
+    const {file, author, createdAt} = this.state
+    this.fileUpload(file, author, createdAt)
+    .then((response)=>{
+      if(response.data.success) {
+        this.setState({
+          fireRedirect: true
+        })
+      }
     })
   }
+
   onChange(e) {
     this.setState({file:e.target.files[0]})
   }
 
-  fileUpload(file, title, department, version, author, createdAt){
-    const url = `${process.env.REACT_APP_BACKEND_URL}/sops`;
+  fileUpload(file, author, createdAt){
+    const url = `${process.env.REACT_APP_BACKEND_URL}/sops/addversion/${this.props.match.params.id}`;
     const formData = new FormData();
     formData.append('file', file)
     formData.append('author', author)
@@ -53,44 +71,48 @@ class AddSopVersion extends React.Component {
   }
 
   render() {
+    if (!this.state.loaded) { return(<Loader/>)}
     return (
-      <form onSubmit={this.onFormSubmit}>
-      <div className="form-group">
-        <label htmlFor="version">Version</label>
-        <input type="number" 
-              className="form-control" 
-              id="version"
-              name="version" 
-              min="1" 
-              step="1" 
-              value={this.state.version} 
-              onChange={this.handleInputChange} />
+      
+      <div className="data-wrapper3">
+        {this.state.successMessage}
+        <h3 className="solid-heading">SOP - Upload New Version</h3>
+        <dl className="row">
+          <dt className="col-sm-3">Title</dt>
+          <dd className="col-sm-9">{this.state.sop.title}</dd>
+          <dt className="col-sm-3">Department</dt>
+          <dd className="col-sm-9">{this.state.sop.department}</dd>
+        </dl>
+        <p className="text-muted"><strong>Note</strong>: The most recent version of this SOP was written by {this.state.sop.currentVersion.author} on {this.state.sop.currentVersion.createdAt} (version {this.state.sop.currentVersion.version})</p>
+        <hr />
+
+        <form onSubmit={this.onFormSubmit}>
+          <div className="form-group">
+            <label htmlFor="author">Author</label>
+            <input type="text" 
+                  name="author" id="author"
+                  className="form-control" 
+                  value={this.state.author} 
+                  onChange={this.handleInputChange} />
+          </div>
+
+
+          <div className="form-group">
+            <label htmlFor="createdAt">Date Created</label>
+            <input type="date" className="form-control" id="createdAt" name="createdAt"
+            value={this.state.createdAt} 
+            onChange={this.handleInputChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <input type="file" className="form-control-file" onChange={this.onChange} />
+          </div>
+
+          <button className="btn btn-secondary" type="submit">Add SOP Version</button>
+        </form>
+        {this.state.fireRedirect && <Redirect to={`/sops/${this.props.match.params.id}`} />}
       </div>
-
-      <div className="form-group">
-        <label htmlFor="author">Author</label>
-        <input type="text" 
-              name="author" id="author"
-              className="form-control" 
-              value={this.state.author} 
-              onChange={this.handleInputChange} />
-      </div>
-
-
-      <div className="form-group">
-        <label htmlFor="createdAt">Date Created</label>
-        <input type="date" className="form-control" id="createdAt" name="createdAt"
-        value={this.state.createdAt} 
-        onChange={this.handleInputChange}
-        />
-      </div>
-
-      <div className="form-group">
-        <input type="file" className="form-control-file" onChange={this.onChange} />
-      </div>
-
-      <button className="btn btn-primary" type="submit">Add SOP Version</button>
-      </form>
    )
   }
 }

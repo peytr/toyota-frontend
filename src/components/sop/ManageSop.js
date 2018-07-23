@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Loader from '../layout/Loader'
 import axios from '../api/init'
+import ReactTable from 'react-table'
+import 'react-table/react-table.css'
 
 class ManageSop extends Component {
   state = {
@@ -47,23 +49,39 @@ class ManageSop extends Component {
     
     return (
       <div>
-        <h1>Manage SOPs</h1>
+        <h3 className="solid-heading">Manage SOPs</h3>
         <Link to="/sops/create"><button className="btn btn-secondary">CREATE</button></Link>
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Department</th>
-              <th>Author </th>
-              <th>Lastest Version</th>
-              <th>Date Created</th>
-              <th>Edit</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sops}
-          </tbody>
-        </table>
+        <ReactTable 
+          data={this.state.sops}
+          columns={[
+            {
+              Header: "Title",
+              accessor: "title"
+            },
+            {
+              Header: "Department",
+              accessor: "department"
+            },
+            {
+              Header: "Latest Version",
+              accessor: "currentVersion.version"
+            },
+            {
+              Header: "Created At",
+              accessor: "currentVersion.createdAt"
+            },
+            {
+              Header: "Edit",
+              accessor: "_id",
+              Cell: row => (
+                <Link to={`/sops/${row.value}`}>Edit</Link>
+              )
+            }
+          ]}
+          className="-striped -highlight"
+          minRows={1}
+          filterable={true}
+        />
       </div>
     )
   }
