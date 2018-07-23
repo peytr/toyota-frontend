@@ -204,6 +204,10 @@ span.tab-space5 {
   background-color: #A72A26;
   color: #FFF8DC;
 }
+
+.pdf-logo {
+  margin: 0 0.5rem;
+} 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

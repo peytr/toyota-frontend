@@ -50,15 +50,17 @@ class MySop extends Component {
   //TODO: Remove space between unread list items
   //TODO: Responsive styling for unread list items and mark as read buttons
   render() {
-    const readSops = this.state.readSops.map((sop, i) => <li className="sop-read" key={i}>{sop.title}</li>)
+    const readSops = this.state.readSops.map((sop, i) => <li className="sop-read" key={i}> <img className="pdf-logo" src={ require('../../img/pdf.png') } />{sop.title}</li>)
 
     const unreadSops = this.state.unreadSops.map((sop, i) => 
       <li className="unread-list-item" key={i}>
-          <a className="sop-unread-user" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>{sop.title}</a>
+          <a className="sop-unread-user" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
+          <img className="pdf-logo" src={ require('../../img/pdf.png') } />
+          {sop.title}</a>
           <p className="button-mark-read" onClick={() => this.onReadSop(sop)}> Mark As Read </p>
       </li>)
 
-    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li className="sop-outdated" key={i}>{sop.title}  <button> Mark As Read </button> </li>)
+    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li className="sop-outdated" key={i}>  <img className="pdf-logo" src={ require('../../img/pdf.png') } /> {sop.title}  <button> Mark As Read </button> </li>)
 
     if (!this.state.loaded) { return(<Loader/>)}
 
