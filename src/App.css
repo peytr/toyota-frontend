@@ -176,20 +176,66 @@ span.tab-space5 {
   padding: 0;
 }
 
-.sop-read-item {
+.sop-read {
   color: #FFFFFF;
   background-color: #439553;
-  /* border: 1px solid #c3e6cb; */
   border-radius: .5rem;
   padding: .75rem 1.25rem;
   margin-bottom: .3rem;
 }
 
-.sop-unread-item {
+.sop-outdated-admin {
+  color: #FFFFFF;
+  background-color: orange;
+  border-radius: .5rem;
+  padding: .75rem 1.25rem;
+  margin-bottom: .3rem;
+}
+
+.sop-outdated {
+  color: #FFFFFF;
+  background-color: orange;
+  border-radius: .5rem;
+  padding: .75rem 1.25rem;
+  margin-bottom: .3rem;
+}
+
+.sop-unread-admin {
   color: #FFFFFF;
   background-color: #D71921;
-  /* border: 1px solid #f5c6cb; */
   border-radius: .5rem;
   padding: .75rem 1.25rem;
   margin-top: .3rem;
+}
+
+.sop-unread-user {
+  display: inline-block;
+  color: #FFFFFF;
+  background-color: #D71921;
+  border-radius: .5rem;
+  padding: .75rem 1.25rem;
+  margin: 0;
+  margin-right: .5%;
+  width: 79.5%;
+}
+
+.button-mark-read {
+  display: inline-block;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #D71921;
+  border-radius: .5rem;
+  padding: .75rem 1.25rem;
+  width: 20%;
+}
+
+.button-mark-read:hover {
+  background-color: #A72A26;
+  color: #FFF8DC;
+}
+
+.sop-unread-user:hover {
+  text-decoration: none;
+  background-color: #A72A26;
+  color: #FFF8DC;
 }

@@ -140,9 +140,9 @@ class ViewUser extends Component {
   }
 
   render() {
-    const readSops = this.state.readSops.map((sop, i) => <li className="sop-read-item" key={i}>{sop.title}</li>)
-    const unreadSops = this.state.unreadSops.map((sop, i) => <li className="sop-unread-item" key={i}>{sop.title}</li>)
-    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li className="sop-outdated-item" key={i}>{sop.title}</li>)
+    const readSops = this.state.readSops.map((sop, i) => <li className="sop-read" key={i}>{sop.title}</li>)
+    const unreadSops = this.state.unreadSops.map((sop, i) => <li className="sop-unread-admin" key={i}>{sop.title}</li>)
+    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li className="sop-outdated" key={i}>{sop.title}</li>)
     // let showUnreadSopsTitle = false
 
     if(this.state.user) {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import instance from '../api/init'
-// import { Link } from 'react-router-dom'
 
 class MyProfile extends Component {
 

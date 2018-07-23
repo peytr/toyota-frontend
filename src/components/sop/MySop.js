@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import axios from '../api/init'
 import Loader from '../layout/Loader'
 
-// import { Link } from 'react-router-dom'
-
 class MySop extends Component {
   constructor(props) {
     super(props)
@@ -49,28 +47,47 @@ class MySop extends Component {
     .catch()
   }
   
+  //TODO: Remove space between unread list items
+  //TODO: Responsive styling for unread list items and mark as read buttons
   render() {
-    const readSops = this.state.readSops.map((sop, i) => <li key={i}>{sop.title}</li>)
-    const unreadSops = this.state.unreadSops.map((sop, i)=> <li key={i}>{sop.title}  <button onClick={() => this.onReadSop(sop)}> Mark As Read </button> </li>)
-    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li key={i}>{sop.title}  <button> Mark As Read </button> </li>)
+    const readSops = this.state.readSops.map((sop, i) => <li className="sop-read" key={i}>{sop.title}</li>)
+
+    const unreadSops = this.state.unreadSops.map((sop, i) => 
+      <li className="unread-list-item" key={i}>
+          <a className="sop-unread-user" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>{sop.title}</a>
+          <p className="button-mark-read" onClick={() => this.onReadSop(sop)}> Mark As Read </p>
+      </li>)
+
+    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li className="sop-outdated" key={i}>{sop.title}  <button> Mark As Read </button> </li>)
 
     if (!this.state.loaded) { return(<Loader/>)}
 
     return (
-      <div>
-        <h1>Your SOPs</h1>
-          <h3>Unread</h3>
-            <ul>
+      <div className="data-wrapper3">
+        <div className="col-md-12 m-auto">
+        <h3 className="head text-center">Your SOPs</h3>
+        {unreadSops.length !== 0 ?
+          <div>
+            <h3 className="solid-heading">Unread</h3>
+            <ul className="sop-list">
               {unreadSops}
-            </ul>
-          <h3>Outdated</h3>
-            <ul>
+            </ul> 
+          </div> : null}
+          {outdatedSops.length !== 0 ?
+          <div>
+            <h3 className="solid-heading">Outdated</h3>
+            <ul className="sop-list">
               {outdatedSops}
             </ul>
-          <h3>Read</h3>
-            <ul>
+          </div> : null}
+          {readSops.length !== 0 ?
+          <div>
+            <h3 className="solid-heading">Read</h3>
+            <ul className="sop-list">
               {readSops}
             </ul>
+          </div> : null}
+        </div>
       </div>
     )
   }

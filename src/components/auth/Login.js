@@ -49,9 +49,9 @@ class Login extends Component {
             <br/>
             <form onSubmit={this.onSubmit.bind(this)}>
               <div className="form-group">
+                <label className='label'>Toyota Number</label>
                 <input type="text" 
-                className="form-control form-control-lg" 
-                placeholder="Toyota Number" 
+                className="form-control form-control-lg"
                 name="employeeNumber"
                 value={this.state.employeeNumber}
                 onChange={this.onChange.bind(this)} 
@@ -59,9 +59,9 @@ class Login extends Component {
               </div>
               <br/>
               <div className="form-group">
+                <label className='label'>Password</label>
                 <input type="password" 
-                className="form-control form-control-lg" 
-                placeholder="Password" 
+                className="form-control form-control-lg"
                 name="password" 
                 value={this.state.password}
                 onChange={this.onChange.bind(this)} 
@@ -70,7 +70,7 @@ class Login extends Component {
               <br/>
               <br/>
               <div className="text-center"> 
-              <button type="submit"  className="btn btn-primary">Login</button>
+              <button type="submit"  className="btn btn-secondary">Login</button>
               </div>
             </form>
           </div>
