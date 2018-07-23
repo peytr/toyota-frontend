@@ -4,6 +4,7 @@ import axios from '../api/init'
 import { Link } from 'react-router-dom'
 import Multiselect from 'react-widgets/lib/Multiselect'
 import ReactSvgPieChart from "react-svg-piechart"
+import moment from 'moment'
 import 'react-widgets/dist/css/react-widgets.css'
 
 class EditSop extends Component {
@@ -114,7 +115,9 @@ class EditSop extends Component {
             <dt className="col-sm-3">Author</dt>
             <dd className="col-sm-9">{this.state.sop.currentVersion.author}</dd>
             <dt className="col-sm-3">Date Created</dt>
-            <dd className="col-sm-9">{this.state.sop.currentVersion.createdAt}</dd>
+            <dd className="col-sm-9">{moment(this.state.sop.currentVersion.createdAt).format('DD MMMM YYYY')}</dd>
+            <dt className="col-sm-3">Date Expiring</dt>
+            <dd className="col-sm-9">{moment(this.state.sop.currentVersion.currentExpires).format('DD MMMM YYYY')}</dd>
             <dt className="col-sm-3">Latest Version</dt>
             <dd className="col-sm-9">{this.state.sop.currentVersion.version}</dd>
           </dl>
