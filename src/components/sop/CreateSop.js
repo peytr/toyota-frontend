@@ -1,5 +1,6 @@
 import React from 'react'
 import axios, { post } from 'axios';
+import history from '../layout/history'
 
 class CreateSop extends React.Component {
 
@@ -8,9 +9,11 @@ class CreateSop extends React.Component {
     this.state ={
       file: null,
       title: '',
+      titleError: '',
       department: '',
       version: '',
       author: '',
+      authorError: '',
       createdAt: ''
     }
     this.onFormSubmit = this.onFormSubmit.bind(this)
@@ -29,13 +32,52 @@ class CreateSop extends React.Component {
     });
   }
 
+  validate = () => {
+    let isError = false
+    const errors = {
+      titleError: '',
+      departmentError: '',
+      authorError: ''
+    }
+
+    if (this.state.title.length < 3 || this.state.title.length > 60) {
+      isError = true
+      errors.titleError = 'SOP title must be between 2 and 60 characters'
+    }
+
+    if (this.state.author.length < 2 || this.state.author.length > 30) {
+      isError = true
+      errors.authorError = 'Author must be between 2 and 60 characters'
+    }
+
+    if (isError) {
+      this.setState(errors)
+    }
+    return isError
+  }
+  
+
   onFormSubmit(e){
     e.preventDefault()
+    const err = this.validate()
+    if (!err) {
+      this.setState({
+        file: null,
+        title: '',
+        titleError: '',
+        department: '',
+        version: '',
+        author: '',
+        authorError: '',
+        createdAt: '',
+      })
+
     const {file, title, department, version, author, createdAt} = this.state
     this.fileUpload(file, title, department, version, author, createdAt).then((response)=>{
       console.log(response.data);
     })
   }
+}
   onChange(e) {
     this.setState({file:e.target.files[0]})
   }
@@ -55,8 +97,11 @@ class CreateSop extends React.Component {
             'content-type': 'multipart/form-data'
         }
     }
-    return post(url, formData, config)
+    alert('SOP successfully uploaded')
+    this.props.history.push('/managesop')
+    return post(url, formData, config)  
   }
+
 
   render() {
     return (
@@ -69,14 +114,20 @@ class CreateSop extends React.Component {
                 name="title"
                 id="title"
                 value={this.state.title} 
-                onChange={this.handleInputChange} />
+                onChange={this.handleInputChange} 
+                errortext={this.state.authorError}
+                required
+                />
+        <div className="form-alert">{this.state.authorError}</div>
       </div>
       
       <div className="form-group">
         <label htmlFor="sop-name">Department</label>
         <select className="form-control" name="department" id="department"
                 value={this.state.department} 
-                onChange={this.handleInputChange}>
+                onChange={this.handleInputChange}
+                required>
+                
           <option value="" disabled></option>
           <option value="Product Planning & Pricing">Product Planning & Pricing</option>
           <option value="Product Design">Product Design</option>
@@ -96,7 +147,9 @@ class CreateSop extends React.Component {
               min="1" 
               step="1" 
               value={this.state.version} 
-              onChange={this.handleInputChange} />
+              onChange={this.handleInputChange} 
+              required
+              />
       </div>
 
       <div className="form-group">
@@ -105,20 +158,24 @@ class CreateSop extends React.Component {
               name="author" id="author"
               className="form-control" 
               value={this.state.author} 
-              onChange={this.handleInputChange} />
+              onChange={this.handleInputChange} 
+              errortext={this.state.authorError}
+              required
+              />
+        <div className="form-alert">{this.state.authorError}</div>
       </div>
-
 
       <div className="form-group">
         <label htmlFor="createdAt">Date Created</label>
         <input type="date" className="form-control" id="createdAt" name="createdAt"
         value={this.state.createdAt} 
         onChange={this.handleInputChange}
+        required
         />
       </div>
 
       <div className="form-group">
-        <input type="file" className="form-control-file" onChange={this.onChange} />
+        <input type="file" className="form-control-file" onChange={this.onChange} required/>
       </div>
 
       <button className="btn btn-secondary" type="submit">Create SOP</button>
@@ -126,7 +183,5 @@ class CreateSop extends React.Component {
    )
   }
 }
-
-
 
 export default CreateSop

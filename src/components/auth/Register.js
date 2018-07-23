@@ -123,6 +123,8 @@ class Register extends Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        alert('User successfully created')
+        this.props.history.go(-1)
         
       })
       .catch(err => console.error(err))
