@@ -87,6 +87,14 @@
   margin: 0 auto;
 }
 
+.data-wrapper3{
+  max-width: 90%;
+  border:1px solid #EEE;
+  border-radius: 5px;
+  margin: 1rem auto;
+  padding: 1.5rem;
+}
+
 .profile-heading {
   height: 50px;
   max-width: 600px;
