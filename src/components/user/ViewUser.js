@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Loader from '../layout/Loader'
 import instance from '../api/init'
 
 class ViewUser extends Component {
@@ -13,7 +14,11 @@ class ViewUser extends Component {
       email: null,
       department: null,
       active: true,
-      administrator: false
+      administrator: false,
+      loaded: false,
+      readSops: [],
+      unreadSops: [],
+      outdatedSops: []
     }
 
     this.onChange = this.onChange.bind(this);
@@ -116,13 +121,17 @@ class ViewUser extends Component {
        console.log(response);
        this.setState({
         user: true,
-        firstName: response.data.firstName,
-        lastName: response.data.lastName,
-        employeeNumber: response.data.employeeNumber,
-        email: response.data.email,
-        department: response.data.department,
-        active: response.data.active,
-        administrator: response.data.administrator
+        firstName: response.data.user.firstName,
+        lastName: response.data.user.lastName,
+        employeeNumber: response.data.user.employeeNumber,
+        email: response.data.user.email,
+        department: response.data.user.department,
+        active: response.data.user.active,
+        administrator: response.data.user.administrator,
+        loaded: true,
+        readSops: response.data.summarySop.readSops,
+        unreadSops: response.data.summarySop.unreadSops,
+        outdatedSops: response.data.summarySop.outdatedSops
        });
      })
     .catch((error) => {
@@ -131,16 +140,22 @@ class ViewUser extends Component {
   }
 
   render() {
+    const readSops = this.state.readSops.map((sop, i) => <li key={i}>{sop.title}</li>)
+    const unreadSops = this.state.unreadSops.map((sop, i)=> <li key={i}>{sop.title}  <button onClick={() => this.onReadSop(sop)}> Mark As Read </button> </li>)
+    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li key={i}>{sop.title}  <button> Mark As Read </button> </li>)
+
     if(this.state.user) {
       return (
         <div>
-          <div className="data-wrapper2">
+          <div className="">
             <div className="register">
             <div className="container">
               <div className="row">
                 <div className="col-md-8 m-auto">
+                  <div className="profile-heading">
+                    <h3 className="profile-title">View / Update User</h3>
+                  </div>
                   <br/>
-                  <p className="lead text-center">Update User</p>
                   <form className='form' onSubmit={this.onSubmit}>
                     <div className='form-group'>
                       <label className='label'>First Name</label>
@@ -249,6 +264,30 @@ class ViewUser extends Component {
                       </div>
                     </div>
                   </form>
+
+                  <br />
+                  
+                  <div>
+                    <div className="profile-heading">
+                      <h3 className="profile-title">Unread SOP</h3>
+                    </div>
+                      <ul>
+                        {unreadSops}
+                      </ul>
+                    <div className="profile-heading">
+                      <h3 className="profile-title">Outdated SOP</h3>
+                    </div>
+                      <ul>
+                        {outdatedSops}
+                      </ul>
+                    <div className="profile-heading">
+                      <h3 className="profile-title">Read SOP</h3>
+                    </div>
+                      <ul>
+                        {readSops}
+                      </ul>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -258,7 +297,7 @@ class ViewUser extends Component {
       )
     }
     return (
-      <p>Loading user</p>
+      <Loader/>
     )
   }
 }
