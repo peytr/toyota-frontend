@@ -140,9 +140,10 @@ class ViewUser extends Component {
   }
 
   render() {
-    const readSops = this.state.readSops.map((sop, i) => <li key={i}>{sop.title}</li>)
-    const unreadSops = this.state.unreadSops.map((sop, i)=> <li key={i}>{sop.title}  <button onClick={() => this.onReadSop(sop)}> Mark As Read </button> </li>)
-    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li key={i}>{sop.title}  <button> Mark As Read </button> </li>)
+    const readSops = this.state.readSops.map((sop, i) => <li className="sop-read-item" key={i}>{sop.title}</li>)
+    const unreadSops = this.state.unreadSops.map((sop, i) => <li className="sop-unread-item" key={i}>{sop.title}</li>)
+    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li className="sop-outdated-item" key={i}>{sop.title}</li>)
+    // let showUnreadSopsTitle = false
 
     if(this.state.user) {
       return (
@@ -263,28 +264,38 @@ class ViewUser extends Component {
                   </form>
 
                   <br />
-                  
-                  <div>
-                    <h3 className="solid-heading">
-                      Unread SOP
-                    </h3>
-                      <ul>
-                        {unreadSops}
-                      </ul>
-                    <h3 className="solid-heading">
-                      Outdated SOP
-                    </h3>
-                      <ul>
-                        {outdatedSops}
-                      </ul>
-                    <h3 className="solid-heading">
-                      Read SOP
-                    </h3>
-                      <ul>
-                        {readSops}
-                      </ul>
-                  </div>
 
+                  <div>
+                    {unreadSops.length !== 0 ?
+                      <div>
+                        <h3 className="solid-heading">
+                          Unread SOP
+                        </h3>
+                        <ul className="sop-list">
+                          {unreadSops}
+                        </ul>
+                      </div> : null}
+
+                      {outdatedSops.length !== 0 ?
+                      <div>
+                        <h3 className="solid-heading">
+                          Outdated SOP
+                        </h3>
+                        <ul className="sop-list">
+                          {outdatedSops}
+                        </ul>
+                      </div> : null}
+
+                      {readSops.length !== 0 ?
+                      <div>
+                        <h3 className="solid-heading">
+                          Read SOP
+                        </h3>
+                        <ul className="sop-list">
+                          {readSops}
+                        </ul>
+                      </div> : null}
+                  </div>
                 </div>
           </div>
         </div>
