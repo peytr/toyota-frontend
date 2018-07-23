@@ -147,14 +147,11 @@ class ViewUser extends Component {
     if(this.state.user) {
       return (
         <div>
-          <div className="">
-            <div className="register">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-8 m-auto">
-                  <div className="profile-heading">
-                    <h3 className="profile-title">View / Update User</h3>
-                  </div>
+          <div className="data-wrapper3">
+                <div className="col-md-12 m-auto">
+                  <h3 className="solid-heading">
+                    View / Update User
+                  </h3>
                   <br/>
                   <form className='form' onSubmit={this.onSubmit}>
                     <div className='form-group'>
@@ -268,30 +265,27 @@ class ViewUser extends Component {
                   <br />
                   
                   <div>
-                    <div className="profile-heading">
-                      <h3 className="profile-title">Unread SOP</h3>
-                    </div>
+                    <h3 className="solid-heading">
+                      Unread SOP
+                    </h3>
                       <ul>
                         {unreadSops}
                       </ul>
-                    <div className="profile-heading">
-                      <h3 className="profile-title">Outdated SOP</h3>
-                    </div>
+                    <h3 className="solid-heading">
+                      Outdated SOP
+                    </h3>
                       <ul>
                         {outdatedSops}
                       </ul>
-                    <div className="profile-heading">
-                      <h3 className="profile-title">Read SOP</h3>
-                    </div>
+                    <h3 className="solid-heading">
+                      Read SOP
+                    </h3>
                       <ul>
                         {readSops}
                       </ul>
                   </div>
 
                 </div>
-              </div>
-            </div>
-            </div>
           </div>
         </div>
       )

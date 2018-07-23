@@ -90,16 +90,14 @@
   margin: 0 auto;
 }
 
-<<<<<<< HEAD
-@media only screen and (min-width: 800px) {
-  .data-wrapper2 {
-      border:2px solid black;
-  }
+.data-wrapper3{
+  max-width: 95%;
+  border:1px solid #EEE;
+  border-radius: 5px;
+  margin: 1rem auto;
+  padding: 1.5rem;
 }
 
-
-
-=======
 .data-wrapper3{
   max-width: 90%;
   border:1px solid #EEE;
@@ -108,7 +106,16 @@
   padding: 1.5rem;
 }
 
->>>>>>> 4259e773c444b7158513f82564c9ec3fc5a953c9
+.solid-heading {
+  width: 100%;
+  padding: 1rem;
+  background-color: #58595b;
+  font-size: 1.4rem;
+  margin: 1.2rem auto;
+  color: #FFFFFF;
+  border-radius: 7px;
+}
+
 .profile-heading {
   height: 50px;
   max-width: 600px;
