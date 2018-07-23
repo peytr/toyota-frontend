@@ -1,6 +1,5 @@
 import React from 'react'
-import axios, { post } from 'axios';
-import history from '../layout/history'
+import { post } from 'axios';
 
 class CreateSop extends React.Component {
 
