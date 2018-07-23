@@ -81,12 +81,13 @@ class ChangePassword extends Component {
     .then(res => {
       console.log(res.data);
       alert('Your password was updated')
-      // To refresh DOM page to 'ManageUsers' page;
-      // history.push('/')
-      // To go back one page to 'ViewUser' with virtual DOM
       this.props.history.go(-1)
     })
-    .catch(err => console.error(err))
+    .catch(err => {
+      console.error(err)
+      
+    })
+    
   } 
 }
 
