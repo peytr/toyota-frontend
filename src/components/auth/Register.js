@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from '../api/init'
+import history from '../layout/history'
 
 class Register extends Component {
   constructor() {
@@ -122,6 +123,7 @@ class Register extends Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        
       })
       .catch(err => console.error(err))
     }

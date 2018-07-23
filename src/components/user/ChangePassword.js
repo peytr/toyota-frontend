@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import instance from '../api/init'
+import ManageSop from '../sop/ManageSop'
+// import history from '../layout/history'
 
 class ChangePassword extends Component {
   constructor(props) {
@@ -8,12 +10,46 @@ class ChangePassword extends Component {
     this.state = {
       errors: {},
       oldPassword: "",
-      password1: "",
+      password: "",
       password2: ""
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  validate = () => {
+    let isError = false
+    const errors = {
+      oldPasswordError: "",
+      passwordError: "",
+      password2Error: ""
+    }
+
+    if (this.state.oldPassword.length < 3 || this.state.oldPassword.length > 30) {
+      isError = true
+      errors.oldPasswordError = 'Invalid Old password'
+    }
+
+    if (this.state.password.length < 3 || this.state.password.length > 30) {
+      isError = true
+      errors.passwordError = 'Your new password must be between 2 and 30 characters'
+    }
+
+    if (this.state.password2.length < 3 || this.state.password2.length > 30)  {
+      isError = true
+      errors.password2Error = 'Your new password must be between 2 and 30 characters'
+    }
+
+    if (this.state.password !== this.state.password2)  {
+      isError = true
+      errors.password2Error = 'Your passwords do not match'
+    }
+
+    if (isError) {
+      this.setState(errors)
+    }
+    return isError
   }
 
   handleChange(event) {
@@ -30,45 +66,54 @@ class ChangePassword extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const err = this.validate()
+    if (!err) {
     console.log(this.state);
 
     // on submit form data to update password in database
     const password = {
       oldPassword: this.state.oldPassword,
-      password1: this.state.password1,
+      password: this.state.password,
       password2: this.state.password2
     }
 
     instance.patch("/users/password", password) 
     .then(res => {
       console.log(res.data);
+      alert('Your password was updated')
+      // To refresh DOM page to 'ManageUsers' page;
+      // history.push('/')
+      // To go back one page to 'ViewUser' with virtual DOM
+      this.props.history.go(-1)
     })
     .catch(err => console.error(err))
-  }
+  } 
+}
 
-
-  render() {
-      return (
+render() {
+    return (
         <div>
-          <div className="data-wrapper2">
+          <div>
             <div className="register">
             <div className="container">
               <div className="row">
                 <div className="col-md-8 m-auto">
                   <br/>
-                  <p className="lead text-center">Update Password</p>
+                  <h1>Change Password</h1>
+                  <br/>
                   <form className='form' onSubmit={this.handleSubmit}>
                     <div className='form-group'>
                       <label className='label'>Old Password</label>
                       <div className='control'>
                         <input
                           className='form-control form-control-md'
-                          type='text'
+                          type='password'
                           name='oldPassword'
                           value={this.state.oldPassword}
                           onChange={this.handleChange}
-                      
+                          required
                           />
+                          <div className="form-alert">{this.state.oldPasswordError}</div>
                       </div>
                     </div>
 
@@ -77,12 +122,13 @@ class ChangePassword extends Component {
                       <div className='control'>
                         <input
                           className='form-control form-control-md'
-                          type='text'
-                          name='password1'
-                          value={this.state.password1}
+                          type='password'
+                          name='password'
+                          value={this.state.password}
                           onChange={this.handleChange}
-                         
+                          required
                           />
+                           <div className="form-alert">{this.state.passwordError}</div>
                       </div>
                     </div>
 
@@ -91,15 +137,16 @@ class ChangePassword extends Component {
                       <div className='control'>
                         <input
                           className='form-control form-control-md'
-                          type='text'
+                          type='password'
                           name='password2'
                           value={this.state.password2}
                           onChange={this.handleChange}
-                          // placeholder={this.state.user.employeeNumber}
+                          required
                           />
+                           <div className="form-alert">{this.state.password2Error}</div>
                       </div>
                     </div>
-
+                      <br/>
                            <div className="field">
                       <div className="control">
                         <input

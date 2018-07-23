@@ -4,9 +4,7 @@ import instance from '../api/init'
 
 class MyProfile extends Component {
 
-  state = {
-user: ""
-}
+  state = { user: "" }
 
   componentDidMount() {
     instance.get('users/me')
@@ -15,15 +13,12 @@ user: ""
        this.setState({
          user: response.data
         })
-      //  console.log(this.state)
      })
     .catch((error)=>{
        console.log(error);
     })
   }
 
-
-  
   render() {
     return (  
  <div>    
@@ -44,9 +39,9 @@ user: ""
     </div>
 
     <div className="btn-toolbar text-center">
-    <a href= "http://localhost:3000/password">
-      <button type="button" id="btnSubmit" className="btn btn-secondary btn-sm butty">Change Password</button>
-    </a>
+      <a href= "http://localhost:3000/password">
+        <button type="button" id="btnSubmit" className="btn btn-secondary btn-sm butty">Change Password</button>
+      </a>
       <a href="mailto:dave@toyota.com.ay?subject=Please update my details on SOP Portal">
         <button type="button" id="btnCancel" className="btn btn-secondary btn-sm butty">Request Update</button>
       </a> 
