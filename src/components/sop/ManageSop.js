@@ -49,8 +49,8 @@ class ManageSop extends Component {
     
     return (
       <div>
-        <h3 className="solid-heading">Manage SOPs</h3>
-        <Link to="/sops/create"><button className="btn btn-secondary">CREATE</button></Link>
+        <div className="solid-heading d-flex justify-content-between">Manage SOPs <Link to="/sops/create"><button className="btn btn-secondary">Create New SOP</button></Link></div>
+        
         <ReactTable 
           data={this.state.sops}
           columns={[
