@@ -92,78 +92,65 @@ class ChangePassword extends Component {
 }
 
 render() {
-    return (
-        <div>
-          <div>
-            <div className="register">
-            <div className="container">
-              <div className="row">
-                <div className="col-md-8 m-auto">
-                  <br/>
-                  <h1>Change Password</h1>
-                  <br/>
-                  <form className='form' onSubmit={this.handleSubmit}>
-                    <div className='form-group'>
-                      <label className='label'>Old Password</label>
-                      <div className='control'>
-                        <input
-                          className='form-control form-control-md'
-                          type='password'
-                          name='oldPassword'
-                          value={this.state.oldPassword}
-                          onChange={this.handleChange}
-                          required
-                          />
-                          <div className="form-alert">{this.state.oldPasswordError}</div>
-                      </div>
-                    </div>
-
-                    <div className='form-group'>
-                      <label className='label'>New Password</label>
-                      <div className='control'>
-                        <input
-                          className='form-control form-control-md'
-                          type='password'
-                          name='password'
-                          value={this.state.password}
-                          onChange={this.handleChange}
-                          required
-                          />
-                           <div className="form-alert">{this.state.passwordError}</div>
-                      </div>
-                    </div>
-
-                    <div className='form-group'>
-                      <label className='label'>Confirm New Password</label>
-                      <div className='control'>
-                        <input
-                          className='form-control form-control-md'
-                          type='password'
-                          name='password2'
-                          value={this.state.password2}
-                          onChange={this.handleChange}
-                          required
-                          />
-                           <div className="form-alert">{this.state.password2Error}</div>
-                      </div>
-                    </div>
-                      <br/>
-                           <div className="field">
-                      <div className="control">
-                        <input
-                          type="submit"
-                          value="Submit"
-                          className="btn btn-secondary"
-                        />
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            </div>
+  return (
+    <div className="data-wrapper4">
+      <h3 className="solid-heading">Change Password</h3>
+      <br/>
+      <form className='form' onSubmit={this.handleSubmit}>
+        <div className='form-group'>
+          <label className='label'>Old Password</label>
+          <div className='control'>
+            <input
+              className='form-control form-control-md'
+              type='password'
+              name='oldPassword'
+              value={this.state.oldPassword}
+              onChange={this.handleChange}
+              required
+              />
+              <div className="form-alert">{this.state.oldPasswordError}</div>
           </div>
         </div>
+        <div className='form-group'>
+          <label className='label'>New Password</label>
+          <div className='control'>
+            <input
+              className='form-control form-control-md'
+              type='password'
+              name='password'
+              value={this.state.password}
+              onChange={this.handleChange}
+              required
+              />
+              <div className="form-alert">{this.state.passwordError}</div>
+          </div>
+        </div>
+        <div className='form-group'>
+          <label className='label'>Confirm New Password</label>
+          <div className='control'>
+            <input
+              className='form-control form-control-md'
+              type='password'
+              name='password2'
+              value={this.state.password2}
+              onChange={this.handleChange}
+              required
+              />
+              <div className="form-alert">{this.state.password2Error}</div>
+          </div>
+        </div>
+        <br/>
+        <div className="field">
+          <div className="text-center">
+            <input
+              type="submit"
+              value="Submit"
+              className="btn btn-secondary"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
       )
     }
 }

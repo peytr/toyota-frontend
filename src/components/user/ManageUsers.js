@@ -1,17 +1,21 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import instance from '../api/init'
-import ListWrapper from './ListWrapper.js'
+import Loader from '../layout/Loader'
 import ReactTable from 'react-table'
 
 class ManageUsers extends Component {
-  state = {users: [{}] } 
+  state = {
+    users: [{}],
+    loaded: false
+  } 
   componentDidMount() {
     instance.get('users/')
      .then((response) => {
        console.log(response);
        this.setState({
-         users: response.data
+         users: response.data,
+         loaded: true
         })
       //  console.log(this.state)
      })
@@ -21,6 +25,7 @@ class ManageUsers extends Component {
   }
 
   render() {
+    if (!this.state.loaded) { return(<Loader/>)}
     return (
       <div>
         <div className="solid-heading  d-flex justify-content-between">Manage Users <Link to="/register"><button className="btn btn-secondary">Create New User</button></Link></div>
