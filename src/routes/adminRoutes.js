@@ -1,5 +1,6 @@
 import ManageSop from '../components/sop/ManageSop'
 import CreateSop from '../components/sop/CreateSop'
+import AddSopVersion from '../components/sop/AddSopVersion'
 import EditSop from '../components/sop/EditSop'
 import ManageUsers from '../components/user/ManageUsers'
 import ViewUser from '../components/user/ViewUser'
@@ -24,6 +25,9 @@ const adminRoutes = [
 }, {
   path: '/sops/:id',
   component: EditSop,
+}, {
+  path: '/sops/:id/addversion',
+  component: AddSopVersion,
 }
 ];
 
