@@ -23,10 +23,10 @@ class MyProfile extends Component {
     return (  
  <div>    
       <h3 className="head text-center">{this.state.user.firstName} {this.state.user.lastName} -  {this.state.user.department} </h3>
-  <div className="data-wrapper">
+  <div className="data-wrapper3">
     <br/>
-      <div className="profile-heading">
-        <h3 className="profile-title">Profile</h3>
+      <div className="solid-heading">
+        Profile
       </div>    
       <div className="details">
         <ul className="list-group">
@@ -40,10 +40,10 @@ class MyProfile extends Component {
 
       <div className="btn-toolbar text-center">
         <a href= "http://localhost:3000/password">
-          <button type="button" id="btnSubmit" className="btn btn-secondary btn-sm butty">Change Password</button>
+          <button type="button" id="btnSubmit" className="btn btn-secondary">Change Password</button>
         </a>
         <a href={`mailto:${process.env.REACT_APP_EMAIL}?subject=Please update my details on SOP Portal`}>
-          <button type="button" id="btnCancel" className="btn btn-secondary btn-sm butty">Request Update</button>
+          <button type="button" id="btnCancel" className="btn btn-secondary">Request Update</button>
         </a> 
       </div>
   </div> 

@@ -111,7 +111,7 @@
   padding: 1rem;
   background-color: #58595b;
   font-size: 1.4rem;
-  margin: 1.2rem auto;
+  margin: 1.2rem auto 0.2rem auto ;
   color: #FFFFFF;
   border-radius: 7px;
 }
@@ -166,3 +166,30 @@ span.tab-space5 {
   /* margin-top: 40px; */
 }
 
+.checkbox {
+  margin-right: 5px;
+}
+
+.sop-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sop-read-item {
+  color: #FFFFFF;
+  background-color: #439553;
+  /* border: 1px solid #c3e6cb; */
+  border-radius: .5rem;
+  padding: .75rem 1.25rem;
+  margin-bottom: .3rem;
+}
+
+.sop-unread-item {
+  color: #FFFFFF;
+  background-color: #D71921;
+  /* border: 1px solid #f5c6cb; */
+  border-radius: .5rem;
+  padding: .75rem 1.25rem;
+  margin-top: .3rem;
+}
