@@ -69,24 +69,37 @@
 .data-wrapper{
   height: 500px;
   max-width: 700px;
-  border:2px solid black;
   margin: 0 auto;
 }
 
 .data-wrapper{
   height: 500px;
   max-width: 700px;
-  border:2px solid black;
   margin: 0 auto;
+}
+
+@media only screen and (min-width: 800px) {
+  .data-wrapper {
+      border:2px solid black;
+  }
 }
 
 .data-wrapper2{
   height: 700px;
   max-width: 700px;
-  border:2px solid black;
   margin: 0 auto;
 }
 
+<<<<<<< HEAD
+@media only screen and (min-width: 800px) {
+  .data-wrapper2 {
+      border:2px solid black;
+  }
+}
+
+
+
+=======
 .data-wrapper3{
   max-width: 90%;
   border:1px solid #EEE;
@@ -95,6 +108,7 @@
   padding: 1.5rem;
 }
 
+>>>>>>> 4259e773c444b7158513f82564c9ec3fc5a953c9
 .profile-heading {
   height: 50px;
   max-width: 600px;

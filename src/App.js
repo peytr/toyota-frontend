@@ -10,6 +10,7 @@ import Error403 from './components/errors/Error403'
 import axios from './api/init'
 import adminRoutes from './routes/adminRoutes'
 import userRoutes from './routes/userRoutes'
+import history from './components/layout/history'
 
 class App extends Component {
   state = {
@@ -59,7 +60,7 @@ class App extends Component {
 
     if (!this.state.loaded) { return <Loader /> }
     return(
-      <Router>
+      <Router history={history} forceRefresh={true}>
       <div>
         { this.state.loggedIn ? <Navbar administrator={this.state.administrator} updateLogout={this.updateLogout}/> : <Header />}
         <div className="container">

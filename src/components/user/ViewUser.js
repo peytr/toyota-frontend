@@ -103,6 +103,8 @@ class ViewUser extends Component {
     instance.patch(`/users/${this.props.match.params.id}`, user) 
     .then(res => {
       console.log(res.data);
+      alert('User successfully updated')
+      this.props.history.go(-1)
     })
     .catch(err => console.error(err))
   }
