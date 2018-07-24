@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import instance from '../api/init'
 import ManageSop from '../sop/ManageSop'
-// import history from '../layout/history'
 
 class ChangePassword extends Component {
   constructor(props) {
@@ -11,7 +10,8 @@ class ChangePassword extends Component {
       errors: {},
       oldPassword: "",
       password: "",
-      password2: ""
+      password2: "",
+      dbPasswordError: ""
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -79,14 +79,13 @@ class ChangePassword extends Component {
 
     instance.patch("/users/password", password) 
     .then(res => {
-      console.log(res.data);
       alert('Your password was updated')
       this.props.history.go(-1)
     })
     .catch(err => {
       console.error(err)
-      
-    })
+      this.setState({dbPasswordError: 'Your old password is incorrect'})
+  })
     
   } 
 }
@@ -109,6 +108,7 @@ render() {
               required
               />
               <div className="form-alert">{this.state.oldPasswordError}</div>
+              <div className="form-alert">{this.state.dbPasswordError}</div>
           </div>
         </div>
         <div className='form-group'>

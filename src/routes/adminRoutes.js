@@ -29,6 +29,7 @@ const adminRoutes = [
   path: '/sops/:id/addversion',
   component: AddSopVersion,
 }
+
 ];
 
 export default adminRoutes
