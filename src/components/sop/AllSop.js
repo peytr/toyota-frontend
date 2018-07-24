@@ -14,7 +14,7 @@ class AllSop extends Component {
   }
 
   componentDidMount() {
-    axios.get('/sops')
+    axios.get('/sops/allforuser')
       .then((response) => {
         this.setState({
           sops: response.data,
@@ -24,18 +24,13 @@ class AllSop extends Component {
     .catch((error)=>{
         console.log(error);
     })
-  }
-
-  onReadSop() {
-    console.log("hi")
-  }
-    
+  }   
 
   render() {
     if (!this.state.loaded) { return(<Loader/>)}
     return (
       <div>
-        <div className="solid-heading d-flex justify-content-between">All SOPs <Link to="/sops/create"><button className="btn btn-secondary">Create New SOP</button></Link></div>        
+        <div className="solid-heading d-flex justify-content-between">All SOPs</div>        
         <ReactTable 
           data={this.state.sops}
           columns={[
@@ -43,7 +38,7 @@ class AllSop extends Component {
               Header: "Title",
               accessor: "title",
               Cell: (data) => (
-                <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${data.original.currentVersion.awsPath}`}><span><img src={pdfLogo} /> {data.value} </span></a>
+                <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${data.original.awsPath}`}><span><img src={pdfLogo} /> {data.value} </span></a>
               )
             },
             {
@@ -62,7 +57,7 @@ class AllSop extends Component {
               id: "createdAt",
               Header: "Created",
               accessor: d => {
-                return moment(d.currentVersion.createdAt).format('DD MMM YYYY')
+                return moment(d).format('DD MMM YYYY')
               }
             },
             {
