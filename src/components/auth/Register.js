@@ -23,7 +23,8 @@ class Register extends Component {
       active: true,
       administrator: false,
       fireRedirect: false,
-      errors: {}
+      errors: {},
+      invalidDetails: ""
     }
   }
 
@@ -80,25 +81,6 @@ class Register extends Component {
     e.preventDefault()
     const err = this.validate()
     if (!err) {
-
-      // clear form
-      this.setState({
-        firstName: "",
-        firstNameError: "",
-        lastName: "",
-        lastNameError: "",
-        employeeNumber: "",
-        employeeNumberError: "",
-        email: "",
-        emailError: "",
-        department: "",
-        departmentError: "",
-        password: "", 
-        passwordError: "",
-        password2: "",
-        password2Error: ""
-      })
-
       const newUser = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -115,9 +97,13 @@ class Register extends Component {
         alert('User successfully created')
         this.setState({fireRedirect: true})        
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.log(err.response.data.errors)
+        this.setState({invalidDetails: Object.values(err.response.data.errors)})
+      })
     }
   }
+
 
   render() {
     return (
@@ -220,31 +206,34 @@ class Register extends Component {
             />
             <div className="form-alert">{this.state.password2Error}</div>
           </div>
-          <div className="form-group checkbox">
-            <label className="checkbox checkbox-label">
-              <input
-                className='checkbox'
-                name="active"
-                type="checkbox"
-                checked={this.state.active}
-                onChange={this.onChange.bind(this)}
-              />
-              Active
-            </label>
-          </div>
-          <div className="form-group checkbox">
-            <label className="checkbox-label">
-              <input
-                className='checkbox'
-                name="administrator"
-                type="checkbox"
-                checked={this.state.administrator}
-                onChange={this.onChange.bind(this)}
-              />
-              Admin
-            </label>
-          </div>
-          <br/>
+              <div className="form-group checkbox">
+                <label className="checkbox checkbox-label">
+                  <input
+                    className='checkbox'
+                    name="active"
+                    type="checkbox"
+                    checked={this.state.active}
+                    onChange={this.onChange.bind(this)}
+                  />
+                  Active
+                </label>
+              </div>
+
+              <div className="form-group checkbox">
+              <label className="checkbox-label">
+                  <input
+                    className='checkbox'
+                    name="administrator"
+                    type="checkbox"
+                    checked={this.state.administrator}
+                    onChange={this.onChange.bind(this)}
+                  />
+                  Admin
+                </label>
+              </div>
+              {/* <h6 className="form-alert alert-danger" role="alert">{this.state.invalidDetails.map(() => )}</h6> */}
+              {this.state.invalidDetails!=="" ? ( this.state.invalidDetails.map((err) => <li className="form-alert alert-danger" role="alert">{err}</li>)) : ( <h6>  </h6>)}
+              <br/>
           <div className="text-center"> 
             <input type="submit" className="btn btn-secondary" />
           </div>
