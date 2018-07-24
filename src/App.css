@@ -142,10 +142,17 @@ span.tab-space5 {
   margin-right: 5px;
 }
 
+
+/* mysop styling */
+
 .sop-list {
-  list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.unread-list-item {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .sop-read {
@@ -177,33 +184,17 @@ span.tab-space5 {
   background-color: #D71921;
   border-radius: .5rem;
   padding: .75rem 1.25rem;
-  margin-top: .3rem;
+  margin-bottom: .3rem;
 }
 
 .sop-unread-user {
-  display: inline-block;
   color: #FFFFFF;
   background-color: #D71921;
   border-radius: .5rem;
   padding: .75rem 1.25rem;
-  margin: 0;
-  margin-right: .5%;
-  width: 79.5%;
-}
-
-.button-mark-read {
-  display: inline-block;
-  text-align: center;
-  color: #FFFFFF;
-  background-color: #D71921;
-  border-radius: .5rem;
-  padding: .75rem 1.25rem;
-  width: 20%;
-}
-
-.button-mark-read:hover {
-  background-color: #A72A26;
-  color: #FFF8DC;
+  width: 69%;
+  box-sizing: border-box;
+  margin-bottom: .3rem;
 }
 
 .sop-unread-user:hover {
@@ -212,9 +203,42 @@ span.tab-space5 {
   color: #FFF8DC;
 }
 
+.sop-unread-user a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.read-success-message {
+  border: 1px solid #58595b;
+  border-radius: .5rem;
+  text-align: center;
+}
+
+.read-success-message h5 {
+  padding: .5rem 1.2rem;
+}
+
+.button-mark-read {
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #D71921;
+  border-radius: .5rem;
+  padding: .5rem;
+  box-sizing: border-box;
+  width: 30%;
+  margin-left: 1%;
+  margin-bottom: .3rem;
+}
+
+.button-mark-read:hover {
+  background-color: #A72A26;
+  color: #FFF8DC;
+}
+
 .pdf-logo {
   margin: 0 0.5rem;
-} 
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

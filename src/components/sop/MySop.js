@@ -47,49 +47,58 @@ class MySop extends Component {
     .catch()
   }
   
-  //TODO: Remove space between unread list items
-  //TODO: Responsive styling for unread list items and mark as read buttons
   render() {
-    const readSops = this.state.readSops.map((sop, i) => <li className="sop-read" key={i}> <img className="pdf-logo" src={ require('../../img/pdf.png') } />{sop.title}</li>)
+    const readSops = this.state.readSops.map((sop, i) => <div className="sop-read" key={i}> <img className="pdf-logo" src={ require('../../img/pdf2.png') } />{sop.title}</div>)
 
     const unreadSops = this.state.unreadSops.map((sop, i) => 
-      <li className="unread-list-item" key={i}>
-          <a className="sop-unread-user" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
-          <img className="pdf-logo" src={ require('../../img/pdf.png') } />
-          {sop.title}</a>
-          <p className="button-mark-read" onClick={() => this.onReadSop(sop)}> Mark As Read </p>
-      </li>)
+      <div className="unread-list-item" key={i}>
+        <div className="sop-unread-user">
+          <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
+            <img className="pdf-logo" src={ require('../../img/pdf2.png') } />
+            {sop.title}
+          </a>
+        </div>
+        <div className="button-mark-read" onClick={() => this.onReadSop(sop)}> Mark As Read </div>
+      </div>)
 
-    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li className="sop-outdated" key={i}>  <img className="pdf-logo" src={ require('../../img/pdf.png') } /> {sop.title}  <button> Mark As Read </button> </li>)
+    const outdatedSops = this.state.outdatedSops.map((sop, i) => <div className="sop-outdated" key={i}>  <img className="pdf-logo" src={ require('../../img/pdf2.png') } /> {sop.title}  <button> Mark As Read </button> </div>)
 
     if (!this.state.loaded) { return(<Loader/>)}
 
     return (
-      <div className="data-wrapper3">
-        <div className="col-md-12 m-auto">
+      <div className="data-wrapper4">
         <h3 className="head text-center">Your SOPs</h3>
+        <h3 className="solid-heading">Unread</h3>
         {unreadSops.length !== 0 ?
-          <div>
-            <h3 className="solid-heading">Unread</h3>
-            <ul className="sop-list">
-              {unreadSops}
-            </ul> 
-          </div> : null}
-          {outdatedSops.length !== 0 ?
-          <div>
-            <h3 className="solid-heading">Outdated</h3>
-            <ul className="sop-list">
-              {outdatedSops}
-            </ul>
-          </div> : null}
-          {readSops.length !== 0 ?
-          <div>
-            <h3 className="solid-heading">Read</h3>
-            <ul className="sop-list">
-              {readSops}
-            </ul>
-          </div> : null}
-        </div>
+          <div className="sop-list">
+            {unreadSops}
+          </div>
+          :
+          <div className="read-success-message">
+            <h5>You are all up to date.</h5>
+          </div>
+        }
+        <h3 className="solid-heading">New Versions Available</h3>
+        {outdatedSops.length !== 0 ?
+          <div className="sop-list">
+            {outdatedSops}
+          </div>
+          : 
+          <div className="read-success-message">
+            <h5>You are all up to date.</h5>
+          </div>
+        }
+
+        <h3 className="solid-heading">Read</h3>
+        {readSops.length !== 0 ?
+          <div className="sop-list">
+            {readSops}
+          </div>
+          : 
+          <div className="read-success-message">
+            <h5>No read SOP.</h5>
+          </div>
+        }
       </div>
     )
   }
