@@ -134,6 +134,8 @@ class EditSop extends Component {
             <dd className="col-sm-9">{this.state.sop.title}</dd>
             <dt className="col-sm-3">Department</dt>
             <dd className="col-sm-9">{this.state.sop.department}</dd>
+            <dt className="col-sm-3">Link to File</dt>
+            <dd className="col-sm-9"><a class="btn btn-success" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${this.state.sop.currentVersion.awsPath}`}><img src={pdfLogo} /> Download SOP</a></dd>
           </dl>
           <hr />
           <dl className="row">
@@ -221,13 +223,37 @@ class EditSop extends Component {
               pathname: `/sops/${this.props.match.params.id}/addversion`,
               state: {sop: this.state.sop}
             }}> <button className="btn btn-success">Add New Version of SOP</button> </Link>
-          <button className="btn btn-danger">Delete SOP</button>
+            <button className="btn btn-danger"  data-toggle="modal" data-target=".bd-example-modal-lg">Delete SOP</button>
+          
+            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Confirmation required to delete SOP</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you would you like to delete this SOP?</p>
+                  <p>If you choose to continue, all information relating to this SOP will be deleted including previous versions, files and the list of employees who have read these documents.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" disabled>Delete SOP</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
 
         <hr/>
 
       </div>
-
+      
+      
       <div className="data-wrapper3">
         <h3 className="solid-heading">SOP - Previous Versions</h3>
         <table className="table">
