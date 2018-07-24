@@ -63,15 +63,29 @@ class MySop extends Component {
 
 
     const outdatedSops = this.state.outdatedSops.map((sop, i) => 
-    <div className="unread-list-item" key={i}>
-      <div className="sop-outdated-user">
-        <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
-          <img className="pdf-logo" src={ require('../../img/pdf2.png') } />
-          {sop.title}
-        </a>
-      </div>
-      <div className="button-mark-read-outdated" onClick={() => this.onReadSop(sop)}> Mark As Read </div>
-    </div>)
+      <li className="unread-list-item" key={i}>
+          <a className="sop-unread-user" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
+          <img className="pdf-logo" src={ require('../../img/pdf.png') } />
+          {sop.title}</a>
+          <div className="span4 proj-div button-mark-read" data-toggle="modal" data-target="#Modal">Mark as read</div>
+          <div id="Modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div className="modal-dialog" tabindex="-1" role="dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h4 className="modal-title">User Agreement</h4>
+                  <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                </div>
+                <div className="modal-body">
+                  By pressing submit you agree to have read in detail and fully understand: {sop.title}
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button type="submit" className="btn btn-primary" onClick={() => this.onReadSop(sop) } data-dismiss="modal">Agree</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </li>)
 
     // const outdatedSops = this.state.outdatedSops.map((sop, i) => 
     //   <div className="sop-outdated" key={i}>  
@@ -83,6 +97,7 @@ class MySop extends Component {
 
     return (
       <div className="data-wrapper4">
+        <div className="col-md-12 m-auto">
         <h3 className="head text-center">Your SOPs</h3>
         <h3 className="solid-heading">Unread</h3>
         {unreadSops.length !== 0 ?
@@ -115,6 +130,7 @@ class MySop extends Component {
             <h5>No read SOP.</h5>
           </div>
         }
+      </div>
       </div>
     )
   }
