@@ -141,6 +141,18 @@ span.tab-space5 {
   margin-bottom: .3rem;
 }
 
+.sop-read a {
+  color: #FFFFFF;
+  background-color: #439553;
+  border-radius: .5rem;
+  padding: .75rem 1.25rem;
+  margin-bottom: .3rem;
+}
+
+.sop-read a:hover {
+  text-decoration: none;
+}
+
 .sop-unread-admin {
   color: #FFFFFF;
   background-color: #D71921;
@@ -180,6 +192,7 @@ span.tab-space5 {
   width: 30%;
   margin-left: 1%;
   margin-bottom: .3rem;
+  cursor: pointer;
 }
 
 .button-mark-read:hover {
@@ -228,6 +241,7 @@ span.tab-space5 {
   width: 30%;
   margin-left: 1%;
   margin-bottom: .3rem;
+  cursor: pointer;
 }
 
 .button-mark-read-outdated:hover {
