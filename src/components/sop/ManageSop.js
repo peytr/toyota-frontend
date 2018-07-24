@@ -70,10 +70,10 @@ class ManageSop extends Component {
               }
             },
             {
-              Header: "Edit",
+              Header: "Manage",
               accessor: "_id",
               Cell: row => (
-                <Link to={`/sops/${row.value}`}>Edit</Link>
+                <Link to={`/sops/${row.value}`}>Manage</Link>
               )
             }
           ]}
