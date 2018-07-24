@@ -163,22 +163,6 @@ span.tab-space5 {
   margin-bottom: .3rem;
 }
 
-.sop-outdated-admin {
-  color: #FFFFFF;
-  background-color: orange;
-  border-radius: .5rem;
-  padding: .75rem 1.25rem;
-  margin-bottom: .3rem;
-}
-
-.sop-outdated {
-  color: #FFFFFF;
-  background-color: orange;
-  border-radius: .5rem;
-  padding: .75rem 1.25rem;
-  margin-bottom: .3rem;
-}
-
 .sop-unread-admin {
   color: #FFFFFF;
   background-color: #D71921;
@@ -208,22 +192,12 @@ span.tab-space5 {
   color: #ffffff;
 }
 
-.read-success-message {
-  border: 1px solid #58595b;
-  border-radius: .5rem;
-  text-align: center;
-}
-
-.read-success-message h5 {
-  padding: .5rem 1.2rem;
-}
-
 .button-mark-read {
   text-align: center;
   color: #FFFFFF;
   background-color: #D71921;
   border-radius: .5rem;
-  padding: .5rem;
+  padding: .75rem;
   box-sizing: border-box;
   width: 30%;
   margin-left: 1%;
@@ -233,6 +207,63 @@ span.tab-space5 {
 .button-mark-read:hover {
   background-color: #A72A26;
   color: #FFF8DC;
+}
+
+.sop-outdated-admin {
+  color: #FFFFFF;
+  background-color: orange;
+  border-radius: .5rem;
+  padding: .75rem 1.25rem;
+  margin-bottom: .3rem;
+}
+
+.sop-outdated-user {
+  color: #FFFFFF;
+  background-color: orange;
+  border-radius: .5rem;
+  padding: .75rem 1.25rem;
+  margin-bottom: .3rem;
+  width: 69%;
+}
+
+.sop-outdated-user:hover {
+  color: #fff8dc;
+  background-color: darkgoldenrod;
+  border-radius: .5rem;
+  padding: .75rem 1.25rem;
+  margin-bottom: .3rem;
+}
+
+.sop-outdated-user a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.button-mark-read-outdated {
+  text-align: center;
+  color: #FFFFFF;
+  background-color: orange;
+  border-radius: .5rem;
+  padding: .75rem;
+  box-sizing: border-box;
+  width: 30%;
+  margin-left: 1%;
+  margin-bottom: .3rem;
+}
+
+.button-mark-read-outdated:hover {
+  background-color: darkgoldenrod;
+  color: #FFF8DC;
+}
+
+.read-success-message {
+  border: 1px solid #58595b;
+  border-radius: .5rem;
+  text-align: center;
+}
+
+.read-success-message h5 {
+  padding: .5rem 1.2rem;
 }
 
 .pdf-logo {

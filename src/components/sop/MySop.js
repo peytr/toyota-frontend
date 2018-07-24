@@ -61,7 +61,23 @@ class MySop extends Component {
         <div className="button-mark-read" onClick={() => this.onReadSop(sop)}> Mark As Read </div>
       </div>)
 
-    const outdatedSops = this.state.outdatedSops.map((sop, i) => <div className="sop-outdated" key={i}>  <img className="pdf-logo" src={ require('../../img/pdf2.png') } /> {sop.title}  <button> Mark As Read </button> </div>)
+
+    const outdatedSops = this.state.outdatedSops.map((sop, i) => 
+    <div className="unread-list-item" key={i}>
+      <div className="sop-outdated-user">
+        <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
+          <img className="pdf-logo" src={ require('../../img/pdf2.png') } />
+          {sop.title}
+        </a>
+      </div>
+      <div className="button-mark-read-outdated" onClick={() => this.onReadSop(sop)}> Mark As Read </div>
+    </div>)
+
+    // const outdatedSops = this.state.outdatedSops.map((sop, i) => 
+    //   <div className="sop-outdated" key={i}>  
+    //     <img className="pdf-logo" src={ require('../../img/pdf2.png') } /> 
+    //     {sop.title}  
+    //     <button> Mark As Read </button> </div>)
 
     if (!this.state.loaded) { return(<Loader/>)}
 
