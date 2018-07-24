@@ -232,7 +232,7 @@ class Register extends Component {
                 </label>
               </div>
               {/* <h6 className="form-alert alert-danger" role="alert">{this.state.invalidDetails.map(() => )}</h6> */}
-              {this.state.invalidDetails!=="" ? ( this.state.invalidDetails.map((err) => <li className="form-alert alert-danger" role="alert">{err}</li>)) : ( <h6>  </h6>)}
+              {this.state.invalidDetails!=="" ? ( this.state.invalidDetails.map((err) => <li className="form-alert user-warning" role="alert">{err}</li>)) : ( <h6>  </h6>)}
               <br/>
           <div className="text-center"> 
             <input type="submit" className="btn btn-secondary" />
