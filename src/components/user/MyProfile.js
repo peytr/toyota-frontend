@@ -27,6 +27,8 @@ class MyProfile extends Component {
     <br/>
       <div className="profile-heading">
         <h3 className="profile-title">Profile</h3>
+
+
       </div>    
       <div className="details">
         <ul className="list-group">

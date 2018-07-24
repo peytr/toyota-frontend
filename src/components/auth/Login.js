@@ -8,6 +8,7 @@ class Login extends Component {
       loggedIn: false,
       employeeNumber: "",
       password: "", 
+      incorrectCredentials: "",
       errors: {}
     }
   }
@@ -28,9 +29,15 @@ class Login extends Component {
           this.setState({ loggedIn: true})
           this.props.updateLogin(res.data) 
           }
+       else{
+         console.log(res.data.errors)
+         this.setState({incorrectCredentials: res.data.errors})
+       }
       })
-      .catch(err => console.error(err))
- 
+      .catch(err => {
+        this.setState({incorrectCredentials: 'Your employee number or password is incorrect'})
+      })
+      
   }
 
   render() {
@@ -66,6 +73,8 @@ class Login extends Component {
                 value={this.state.password}
                 onChange={this.onChange.bind(this)} 
                 />
+                <br/>
+                <div className="form-alert">{this.state.incorrectCredentials}</div>
               </div>
               <br/>
               <br/>

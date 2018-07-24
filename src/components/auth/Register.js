@@ -22,7 +22,8 @@ class Register extends Component {
       password2Error: "",
       active: true,
       administrator: false,
-      errors: {}
+      errors: {},
+      invalidDetails: ""
     }
   }
 
@@ -88,24 +89,6 @@ class Register extends Component {
     const err = this.validate()
     if (!err) {
 
-      // clear form
-      this.setState({
-        firstName: "",
-        firstNameError: "",
-        lastName: "",
-        lastNameError: "",
-        employeeNumber: "",
-        employeeNumberError: "",
-        email: "",
-        emailError: "",
-        department: "",
-        departmentError: "",
-        password: "", 
-        passwordError: "",
-        password2: "",
-        password2Error: ""
-      })
-
       const newUser = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -121,17 +104,26 @@ class Register extends Component {
       console.log(newUser)
       axios.post("/users/register", newUser) 
       .then(res => {
+        if (res.status == 200) { 
         console.log(res);
         console.log(res.data);
         alert('User successfully created')
         this.props.history.go(-1)
-        
+        }
+        else{
+          console.log(res.errors)
+          this.setState({invalidDetails: res.errors})
+        }
       })
-      .catch(err => console.error(err))
+      .catch(err => {
+        console.log(err.response.data.errors)
+        this.setState({invalidDetails: Object.values(err.response.data.errors)})
+      })
     }
   }
 
   render() {
+  
     return (
       <div className="register">
       <div className="container">
@@ -264,12 +256,13 @@ class Register extends Component {
                   Admin
                 </label>
               </div>
-
-
+              {/* <h6 className="form-alert alert-danger" role="alert">{this.state.invalidDetails.map(() => )}</h6> */}
+              {this.state.invalidDetails!=="" ? ( this.state.invalidDetails.map((err) => <li className="form-alert alert-danger" role="alert">{err}</li>)) : ( <h6>  </h6>)}
               <br/>
               <div className="text-center"> 
-                <input type="submit" className="btn btn-primary" />
+                <input type="submit" className="btn btn-secondary" />
               </div>
+              <br/>
             </form>
           </div>
         </div>

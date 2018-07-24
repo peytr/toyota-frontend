@@ -83,25 +83,31 @@ class CreateSop extends React.Component {
   }
 
   fileUpload(file, title, department, version, author, createdAt){
-    const url = `${process.env.REACT_APP_BACKEND_URL}/sops`;
-    const formData = new FormData();
-    formData.append('file', file)
-    formData.append('title', title)
-    formData.append('department', department)
-    formData.append('version', version)
-    formData.append('author', author)
-    formData.append('createdAt', createdAt)
-    const config = {
-        withCredentials: true,
-        headers: {
-            'content-type': 'multipart/form-data'
-        }
+    try {
+  
+      const url = `${process.env.REACT_APP_BACKEND_URL}/sops`;
+      const formData = new FormData();
+      formData.append('file', file)
+      formData.append('title', title)
+      formData.append('department', department)
+      formData.append('version', version)
+      formData.append('author', author)
+      formData.append('createdAt', createdAt)
+      const config = {
+          withCredentials: true,
+          headers: {
+              'content-type': 'multipart/form-data'
+          }
+      }
+      alert('SOP successfully uploaded')
+      this.props.history.push('/managesop')
+      return post(url, formData, config)  
     }
-    alert('SOP successfully uploaded')
-    this.props.history.push('/managesop')
-    return post(url, formData, config)  
+    catch (error) {
+      alert('Error, Please try again')
+    }
+  
   }
-
 
   render() {
     return (
