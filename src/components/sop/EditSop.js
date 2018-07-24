@@ -156,9 +156,9 @@ class EditSop extends Component {
             <div className="col-sm-8 thing">
               <dl className="row">
                 <dt className="col-sm-4">Users Viewed</dt>
-                <dd className="col-sm-6 green-bar">{numberUsersRead} ({Math.round(100*numberUsersRead/numberUsersTotal)}%) </dd>
+                <dd className="col-sm-6 green-bar">{numberUsersRead}</dd>
                 <dt className="col-sm-4">Users Not Viewed</dt>
-                <dd className="col-sm-6 red-bar">{numberUsersUnread} ({Math.round(100*numberUsersUnread/numberUsersTotal)}%)</dd>
+                <dd className="col-sm-6 red-bar">{numberUsersUnread}</dd>
                 <dt className="col-sm-4">Users Required To View</dt>
                 <dd className="col-sm-6 grey-bar">{numberUsersTotal}</dd>
               </dl>
