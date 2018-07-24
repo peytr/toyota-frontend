@@ -205,6 +205,7 @@ span.tab-space5 {
 }
 
 .sop-outdated-user:hover {
+  text-decoration: none;
   color: #fff8dc;
   background-color: darkgoldenrod;
   border-radius: .5rem;

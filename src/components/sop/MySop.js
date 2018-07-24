@@ -63,10 +63,10 @@ class MySop extends Component {
 
     const outdatedSops = this.state.outdatedSops.map((sop, i) => 
       <li className="unread-list-item" key={i}>
-          <a className="sop-unread-user" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
+          <a className="sop-outdated-user" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
           <img className="pdf-logo" src={ require('../../img/pdf.png') } />
           {sop.title}</a>
-          <div className="span4 proj-div button-mark-read" data-toggle="modal" data-target="#Modal">Mark as read</div>
+          <div className="span4 proj-div button-mark-read-outdated" data-toggle="modal" data-target="#Modal">Mark as read</div>
           <div id="Modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div className="modal-dialog" tabindex="-1" role="dialog">
               <div className="modal-content">
