@@ -7,16 +7,15 @@ import 'react-table/react-table.css'
 import moment from 'moment'
 const pdfLogo = require('../../img/pdf.png')
 
-class ManageSop extends Component {
+class AllSop extends Component {
   state = {
     sops: [],
     loaded: false,
   }
 
   componentDidMount() {
-    axios.get('/sops')
+    axios.get('/sops/allforuser')
       .then((response) => {
-        console.log(response);
         this.setState({
           sops: response.data,
           loaded: true
@@ -25,16 +24,13 @@ class ManageSop extends Component {
     .catch((error)=>{
         console.log(error);
     })
-  }
-    
+  }   
 
   render() {
     if (!this.state.loaded) { return(<Loader/>)}
     return (
       <div>
-        <div className="solid-heading d-flex justify-content-between">Manage SOPs <Link to="/sops/create"><button className="btn btn-secondary">Create New SOP</button></Link></div>
-        
-        
+        <div className="solid-heading d-flex justify-content-between">All SOPs</div>        
         <ReactTable 
           data={this.state.sops}
           columns={[
@@ -42,38 +38,33 @@ class ManageSop extends Component {
               Header: "Title",
               accessor: "title",
               Cell: (data) => (
-                <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${data.original.currentVersion.awsPath}`}><span><img src={pdfLogo} /> {data.value} </span></a>
+                <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${data.original.awsPath}`}><span><img src={pdfLogo} /> {data.value} </span></a>
               )
+            },
+            {
+              Header: "Latest Version",
+              accessor: "version"
             },
             {
               Header: "Department",
               accessor: "department"
             },
             {
-              Header: "Latest Version",
-              accessor: "currentVersion.version"
+              Header: "Author",
+              accessor: "author"
             },
             {
               id: "createdAt",
               Header: "Created",
               accessor: d => {
-                return moment(d.currentVersion.createdAt).format('DD MMM YYYY')
-           
+                return moment(d).format('DD MMM YYYY')
               }
             },
             {
-              id: "currentExpires",
-              Header: "Expires",
-              accessor: d => {
-                return moment(d.currentVersion.currentExpires).format('DD MMM YYYY')
-             
-              }
-            },
-            {
-              Header: "Manage",
-              accessor: "_id",
-              Cell: row => (
-                <Link to={`/sops/${row.value}`}>Manage</Link>
+              Header: "Read",
+              accessor: "read",
+              Cell: data => (
+                <span>{ data.value ? "Read" : "Not Read"}</span>
               )
             }
           ]}
@@ -86,4 +77,4 @@ class ManageSop extends Component {
   }
 }
 
-export default ManageSop
+export default AllSop
