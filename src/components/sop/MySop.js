@@ -48,7 +48,12 @@ class MySop extends Component {
   }
   
   render() {
-    const readSops = this.state.readSops.map((sop, i) => <div className="sop-read" key={i}> <img className="pdf-logo" src={ require('../../img/pdf2.png') } />{sop.title}</div>)
+    const readSops = this.state.readSops.map((sop, i) => <div className="sop-read" key={i}> 
+    <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
+      <img className="pdf-logo" src={ require('../../img/pdf2.png') } />
+      {sop.title}
+    </a>
+    </div>)
 
     const unreadSops = this.state.unreadSops.map((sop, i) => 
       <div className="unread-list-item" key={i}>
