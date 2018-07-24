@@ -140,9 +140,9 @@ class ViewUser extends Component {
   }
 
   render() {
-    const readSops = this.state.readSops.map((sop, i) => <li className="sop-read" key={i}>{sop.title}</li>)
-    const unreadSops = this.state.unreadSops.map((sop, i) => <li className="sop-unread-admin" key={i}>{sop.title}</li>)
-    const outdatedSops = this.state.outdatedSops.map((sop, i) => <li className="sop-outdated" key={i}>{sop.title}</li>)
+    const readSops = this.state.readSops.map((sop, i) => <div className="sop-read" key={i}>{sop.title}</div>)
+    const unreadSops = this.state.unreadSops.map((sop, i) => <div className="sop-unread-admin" key={i}>{sop.title}</div>)
+    const outdatedSops = this.state.outdatedSops.map((sop, i) => <div className="sop-outdated" key={i}>{sop.title}</div>)
     // let showUnreadSopsTitle = false
 
     if(this.state.user) {
@@ -266,35 +266,38 @@ class ViewUser extends Component {
                   <br />
 
                   <div>
+                    <h3 className="head text-center">{this.state.firstName} {this.state.lastName}'s - SOP Status</h3>
+                    <h3 className="solid-heading">Unread</h3>
                     {unreadSops.length !== 0 ?
-                      <div>
-                        <h3 className="solid-heading">
-                          Unread SOP
-                        </h3>
-                        <ul className="sop-list">
-                          {unreadSops}
-                        </ul>
-                      </div> : null}
+                      <div className="sop-list">
+                        {unreadSops}
+                      </div>
+                      :
+                      <div className="read-success-message">
+                        <h5>Up to date.</h5>
+                      </div>
+                    }
+                    <h3 className="solid-heading">New Versions Available</h3>
+                    {outdatedSops.length !== 0 ?
+                      <div className="sop-list">
+                        {outdatedSops}
+                      </div>
+                      : 
+                      <div className="read-success-message">
+                        <h5>Up to date.</h5>
+                      </div>
+                    }
 
-                      {outdatedSops.length !== 0 ?
-                      <div>
-                        <h3 className="solid-heading">
-                          Outdated SOP
-                        </h3>
-                        <ul className="sop-list">
-                          {outdatedSops}
-                        </ul>
-                      </div> : null}
-
-                      {readSops.length !== 0 ?
-                      <div>
-                        <h3 className="solid-heading">
-                          Read SOP
-                        </h3>
-                        <ul className="sop-list">
-                          {readSops}
-                        </ul>
-                      </div> : null}
+                    <h3 className="solid-heading">Read</h3>
+                    {readSops.length !== 0 ?
+                      <div className="sop-list">
+                        {readSops}
+                      </div>
+                      : 
+                      <div className="read-success-message">
+                        <h5>No read SOP.</h5>
+                      </div>
+                    }
                   </div>
                 </div>
           </div>
