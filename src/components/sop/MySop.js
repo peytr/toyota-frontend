@@ -58,15 +58,6 @@ class MySop extends Component {
             {sop.title}
           </a>
         </div>
-        <div className="button-mark-read" onClick={() => this.onReadSop(sop)}> Mark As Read </div>
-      </div>)
-
-
-    const outdatedSops = this.state.outdatedSops.map((sop, i) => 
-      <li className="unread-list-item" key={i}>
-          <a className="sop-unread-user" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
-          <img className="pdf-logo" src={ require('../../img/pdf.png') } />
-          {sop.title}</a>
           <div className="span4 proj-div button-mark-read" data-toggle="modal" data-target="#Modal">Mark as read</div>
           <div id="Modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div className="modal-dialog" tabindex="-1" role="dialog">
@@ -84,14 +75,42 @@ class MySop extends Component {
                 </div>
               </div>
           </div>
-        </div>
-      </li>)
+        </div> 
+        {/* <div className="button-mark-read" onClick={() => this.onReadSop(sop)}> Mark As Read </div> */}
+      </div>)
 
-    // const outdatedSops = this.state.outdatedSops.map((sop, i) => 
-    //   <div className="sop-outdated" key={i}>  
-    //     <img className="pdf-logo" src={ require('../../img/pdf2.png') } /> 
-    //     {sop.title}  
-    //     <button> Mark As Read </button> </div>)
+
+    const outdatedSops = this.state.outdatedSops.map((sop, i) => 
+      <div className="unread-list-item" key={i}>
+          <a className="sop-outdated-user" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
+          <img className="pdf-logo" src={ require('../../img/pdf.png') } />
+          {sop.title}
+          </a>
+          <div className="span4 proj-div button-mark-read-outdated" data-toggle="modal" data-target="#Modal">Mark as read</div>
+          <div id="Modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div className="modal-dialog" tabindex="-1" role="dialog">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h4 className="modal-title">User Agreement</h4>
+                  <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;  </button>
+                </div>
+                <div className="modal-body">
+                  By pressing submit you agree to have read in detail and fully understand: {sop.title}
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
+                  <button type="submit" className="btn btn-primary" onClick={() => this.onReadSop(sop) } data-dismiss="modal">Agree</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>)
+
+      // const outdatedSops = this.state.outdatedSops.map((sop, i) => 
+      //   <div className="sop-outdated" key={i}>  
+      //     <img className="pdf-logo" src={ require('../../img/pdf2.png') } /> 
+      //     {sop.title}  
+      //     <button> Mark As Read </button> </div>)
 
     if (!this.state.loaded) { return(<Loader/>)}
 
