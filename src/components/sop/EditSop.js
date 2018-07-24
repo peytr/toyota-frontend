@@ -104,6 +104,7 @@ class EditSop extends Component {
       <div>
         <div className="data-wrapper3">
           <h3 className="solid-heading">SOP - Current Version</h3>
+          <br/>
           <dl className="row">
             <dt className="col-sm-3">Title</dt>
             <dd className="col-sm-9">{this.state.sop.title}</dd>
