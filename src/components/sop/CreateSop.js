@@ -1,5 +1,6 @@
 import React from 'react'
 import { post } from 'axios'
+import { Redirect } from 'react-router-dom'
 
 class CreateSop extends React.Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class CreateSop extends React.Component {
       version: '',
       author: '',
       authorError: '',
-      createdAt: ''
+      createdAt: '',
+      fireRedirect: false
     }
     this.onFormSubmit = this.onFormSubmit.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -65,42 +67,38 @@ class CreateSop extends React.Component {
         authorError: '',
         createdAt: '',
       })
-
-    const {file, title, department, version, author, createdAt} = this.state
-    this.fileUpload(file, title, department, version, author, createdAt).then((response)=>{
-      console.log(response.data);
-    })
+      const {file, title, department, version, author, createdAt} = this.state
+      this.fileUpload(file, title, department, version, author, createdAt)
+        .then((response)=>{
+            alert('SOP successfully uploaded')
+            this.setState({fireRedirect: true})
+          })
+        .catch(() => {
+          alert('Error, Please try again')
+        })
+    }
   }
-}
+
   onChange(e) {
     this.setState({file:e.target.files[0]})
   }
 
   fileUpload(file, title, department, version, author, createdAt){
-    try {
-  
-      const url = `${process.env.REACT_APP_BACKEND_URL}/sops`;
-      const formData = new FormData();
-      formData.append('file', file)
-      formData.append('title', title)
-      formData.append('department', department)
-      formData.append('version', version)
-      formData.append('author', author)
-      formData.append('createdAt', createdAt)
-      const config = {
-          withCredentials: true,
-          headers: {
-              'content-type': 'multipart/form-data'
-          }
-      }
-      alert('SOP successfully uploaded')
-      this.props.history.push('/managesop')
-      return post(url, formData, config)  
+    const url = `${process.env.REACT_APP_BACKEND_URL}/sops`;
+    const formData = new FormData();
+    formData.append('file', file)
+    formData.append('title', title)
+    formData.append('department', department)
+    formData.append('version', version)
+    formData.append('author', author)
+    formData.append('createdAt', createdAt)
+    const config = {
+        withCredentials: true,
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
     }
-    catch (error) {
-      alert('Error, Please try again')
-    }
-  
+    return post(url, formData, config)  
   }
 
   render() {
@@ -176,6 +174,7 @@ class CreateSop extends React.Component {
         <div className="text-center">
           <button className="btn btn-secondary" type="submit">Create SOP</button>
         </div>
+        {this.state.fireRedirect && <Redirect to='/managesop' />}
       </form>
     </div>
    )
