@@ -184,8 +184,37 @@ span.tab-space5 {
 .pdf-logo {
   margin: 0 0.5rem;
 } 
-.classname li a {
+
+.green-bar {
+  background-color: #439553;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  color: #FFFFFF;
+  border: 1px solid #333;
 }
+
+.red-bar {
+  background-color: #D71921;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  color: #FFFFFF;
+  border: 1px solid #333;
+
+}
+
+.grey-bar {
+  background-color: #58595b;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  color: #FFFFFF;
+  border: 1px solid #333;
+
+}
+
+.thing {
+  height: 100%;
+}
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

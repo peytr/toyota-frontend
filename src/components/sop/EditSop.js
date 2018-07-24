@@ -6,6 +6,7 @@ import Multiselect from 'react-widgets/lib/Multiselect'
 import ReactSvgPieChart from "react-svg-piechart"
 import moment from 'moment'
 import 'react-widgets/dist/css/react-widgets.css'
+const pdfLogo = require('../../img/pdf.png')
 
 class EditSop extends Component {
   constructor(props) {
@@ -85,9 +86,29 @@ class EditSop extends Component {
 
   render() {
     if (!this.state.loaded) { return(<Loader/>)}
-    const previousSops = this.state.sopPreviousVersions.map((sop, i) => <tr key={i}><td>{sop.version}</td><td>{sop.createdAt}</td><td>{sop.author}</td><td>{sop.awsPath}</td></tr>)
-    const usersRead = this.state.usersRead.map( (user, i) => <div className="list-group-item" key={i}>{user.fullName}</div>)
-    const usersUnread = this.state.usersUnread.map( (user, i) => <div className="list-group-item" key={i}>{user.fullName} <button onClick={() => this.onRemoveUser(user)}>Remove</button></div>)
+    let previousSops;
+    if (this.state.sopPreviousVersions.length > 0) {
+      previousSops = this.state.sopPreviousVersions.map((sop, i) => 
+      <tr key={i}>
+        <td>{sop.version}</td>
+        <td>{moment(sop.createdAt).format('DD MMM YYYY')}</td>
+        <td>{sop.author}</td>
+        <td><a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.awsPath}`}><img src={pdfLogo} /> View </a> </td>
+        <td>Delete </td>
+      </tr>
+    )
+    } else {
+      previousSops = (<tr><td className="text-center" colspan="5"><em>No Previous Versions</em></td></tr>)
+    }
+  
+    const usersRead = this.state.usersRead.map((user, i) => 
+      <div className="list-group-item" key={i}>{user.fullName}</div>
+    )
+    const usersUnread = this.state.usersUnread.map( (user, i) => 
+      <div className="list-group-item d-flex justify-content-between" key={i}>
+        {user.fullName} <button className="btn btn-light" onClick={() => this.onRemoveUser(user)}>Remove</button>
+      </div>
+    )
     const pieData = [
       {
           "title": "Read",
@@ -100,6 +121,10 @@ class EditSop extends Component {
           "color": "red"
       }
   ]
+    const numberUsersRead = this.state.usersRead.length
+    const numberUsersUnread = this.state.usersUnread.length
+    const numberUsersTotal = this.state.usersRead.length + this.state.usersUnread.length
+
     return(
       <div>
         <div className="data-wrapper3">
@@ -125,17 +150,17 @@ class EditSop extends Component {
           <hr />
 
           <div className="row">
-            <div className="col-sm-8">
+            <div className="col-sm-8 thing">
               <dl className="row">
-                <dt className="col-sm-4 ">Users Viewed</dt>
-                <dd className="col-sm-8">{this.state.usersRead.length}</dd>
+                <dt className="col-sm-4">Users Viewed</dt>
+                <dd className="col-sm-6 green-bar">{numberUsersRead} ({Math.round(100*numberUsersRead/numberUsersTotal)}%) </dd>
                 <dt className="col-sm-4">Users Not Viewed</dt>
-                <dd className="col-sm-8">{this.state.usersUnread.length}</dd>
+                <dd className="col-sm-6 red-bar">{numberUsersUnread} ({Math.round(100*numberUsersUnread/numberUsersTotal)}%)</dd>
                 <dt className="col-sm-4">Users Required To View</dt>
-                <dd className="col-sm-8">{this.state.usersRead.length + this.state.usersUnread.length}</dd>
+                <dd className="col-sm-6 grey-bar">{numberUsersTotal}</dd>
               </dl>
             </div>
-            <div className="col-sm-3">
+            <div className="col-sm-2">
               <ReactSvgPieChart data={pieData} />
             </div>
           </div>
@@ -191,7 +216,6 @@ class EditSop extends Component {
         <hr/>
 
         <div className="d-flex flex-wrap justify-content-around">
-          <Link to="#"><button className="btn btn-success">Edit details of SOP</button></Link>
           <Link to={
             {
               pathname: `/sops/${this.props.match.params.id}/addversion`,
@@ -213,6 +237,7 @@ class EditSop extends Component {
             <th>Date Created</th>
             <th>Author</th>
             <th>View</th>
+            <th>Delete</th>
             </tr>
           </thead>
           <tbody>
