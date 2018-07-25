@@ -18,7 +18,6 @@
 - **[Workflow](#Workflow)**
 - **[ERD](#ERD)**
 - **[Wireframes](#Wireframes)**
-  - [Proposed Wireframes from Client](#Proposed_Wireframes_from_Client)
   - [Initial Whiteboard Wireframes](#Initial_Whiteboard_Wireframes)
   - [Our Wireframes](#Our_Wireframes)
 - **[Challenges](#Challenges)**
@@ -28,6 +27,7 @@
 
 
 ## Project Outline
+Me
 
 ## Specifications
 
@@ -44,6 +44,7 @@
 ## Client Interraction
 
 ## User Stories
+Me
 
 ## Workflow
 
