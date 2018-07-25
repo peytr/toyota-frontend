@@ -1,6 +1,5 @@
 # CA Team 2 - Term 3 Group Project
-# Safe Operating Procedure Manangement Application
-<br>
+# Safe Operating Procedure Management Application
 
 GitHub: [Frontend](#)
 
@@ -8,32 +7,30 @@ GitHub: [Backend](#)
 
 Deployed: [www.something.com](#)
 
-<br>
----
-
 ## Table of Contents
 
 ---
 
-- **[Project Summary](#Project_Summary)**
-  - [Project Specifications](#Project_Specifications)  
-- **[Project Management](#Project_Management)**
-  - [Client Interraction](#Client_Interraction)
-  - [Information Gathering](#Information_Gathering)
-  - [Project Planning and Scope](#Project_Planning_and_Scope)
-  - [Project Schedule](#Project_Schedule)
-  - [Work Allocation](#Work_Allocation)
-  - [Code Reviews](#Code_Reviews)
-  - [Final Project Sign Off](#Final_Project_Sign_Off)
-- **[Application Design](Application_Design)**
-  - [Database Design](#Database_design)
-  - [User Stories](#User_Stories)
-  - [User Workflow](#User_Workflow)
+- **[Project Summary](#Project-Summary)**
+  - [Project Specifications](#Project-Specifications)  
+- **[Project Management](#Project-Management)**
+  - [Client Interaction](#Client-Interaction)
+  - [Information Gathering](#Information-Gathering)
+  - [Project Planning and Scope](#Project-Planning-and-Scope)
+  - [Project Schedule](#Project-Schedule)
+  - [Work Allocation](#Work-Allocation)
+  - [Git, GitHub and Git Workflow](Git,-GitHub-and-Git-Workflow)
+  - [Code Reviews](#Code-Reviews)
+  - [Final Project Sign Off](#Final-Project-Sign-Off)
+- **[Application Design](Application-Design)**
+  - [Database Design](#Database-design)
+  - [User Stories](#User-Stories)
+  - [User Workflow](#User-Workflow)
   - [Wireframes](#Wireframes)
-- **[Post Project Summary](Post_Project_Summary)**
+- **[Post Project Summary](Post-Project-Summary)**
   - [Challenges](#Challenges)
   - [Improvements](#Improvements)
-  - [Final Review](#Final_review)
+  - [Final Review](#Final-review)
 
 
 # Project Summary
@@ -77,37 +74,39 @@ __Back-end__
 - Mongoose
 
 # Project Management
-## Client Interraction
+## Client Interaction
 ### Meeting schedules, meeting minutes and emails
 We recorded our client interactions, meeting schedules and emails on our Trello board so that all team members had access to the information.
 
 Meeting content, meeting minutes and important email content was attached to the corresponding Trello card, available for the team to view.\
 <br>
-![Client Interactions Diary](/readme_assets/client-meeting-diary.png)
+![Client Interactions Diary](readme_assets/client-meeting-diary.png)\
+Trello client interaction diary.
 
 ## Information Gathering
 After the initial meeting with our client we were able to understand the full requirements of the project. This allowed us to carry out extensive research so we were able to move forward and start coding confidently knowing we had the tools available to complete the tasks required.\
 From our research we were able to determine that we needed to provide the following:
 - user authentication
-- user authorisation
+- user authorization
 - file upload and download
 - administration rights
 
 ## Project Planning and Scope
 ![Team Whiteboard Planning 1](readme_assets/group-whiteboard.png) ![Team Whiteboard Planning 1](readme_assets/whiteboard-output.png)\
-**Team whiteboarding planning sessions**
+Team white-boarding planning sessions
 
  Once we understood our project requirements and had a plan of attack our team put together a keynote presentation which included a preliminary statement of project scope and planning direction which we presented to our team of instructors for project sign off.
 
-![Keynote Slide 1](/readme_assets/project-charter-1.png)
-![Keynote Slide 2](/readme_assets/project-charter-2.png)
+![Keynote Slide 1](readme_assets/project-charter-1.png)
+![Keynote Slide 2](readme_assets/project-charter-2.png)\
+Project presentation for sign off.
 
 ## Project Schedule
 **Work Calendar to be created and added**
 - Prepare project work breakdown and schedule - (Pete)
 
 ## Work Allocation
-Project roles and responsibilites were allocated amongst the team after a group discussion via our group Trello board. Using a group trello board allowed us to monitor each others assigned work progress, flag any issues and reassess the project scope as the project build progressed.
+Project roles and responsibilities were allocated amongst the team after a group discussion via our group Trello board. Using a group trello board allowed us to monitor each others assigned work progress, flag any issues and reassess the project scope as the project build progressed.
 Our group trello board included the following lists:
 - Components backlog
 - Misc backlog
@@ -116,11 +115,24 @@ Our group trello board included the following lists:
 - Completed
 - Issues
 
-![Group Tracking Trello Board](/readme_assets/trello.png)
-**Group Tracking Trello Board.**
+![Group Tracking Trello Board](readme_assets/trello.png)\
+Group Tracking Trello Board.
 
 Our group trello board can be visited using the following link -
 [Group 2 - Trello Board](https://trello.com/b/JF1Avb8y/toyota-ppd-sop-app).
+
+## Git, GitHub and Git Workflow
+To prevent any workflow issues we decided as a group from the start to have a protected master and work off a frontend and backend development branch. 
+Pull requests were made to the master branch at intermittent times through out the project.
+
+One team member was made Git master and other team members forked the development branches and worked on feature branches from there.
+
+Further insights in to our merges, commits, pull requests and overall project flow can be found at our GitHub links at the top of this document. [Top](#CA-Team-2---Term-3-Group-Project)
+
+![Frontend GitHub Insights](readme_assets/github-frontend.png) ![Backend GitHub Insights](readme_assets/github-backend.png)\
+Front and Backend GitHub insights
+
+
 
 ## Code Reviews
 - Code reviews - (Luke)
@@ -132,15 +144,17 @@ Our group trello board can be visited using the following link -
 - As a team, conduct post project review
 - Create a questionnaire for the client to ascertain the satisfaction with your products and services
 
+<br>
+
 # Application Design
 ## Database Design
+![Database Schema Design](readme_assets/team-2-erd.png)\
 Our database schema design.
-![Database Schema Design](/readme_assets/team-2-erd.png)
 
 ## User Stories
 Our User Stories
 __OH&S Coordinator__
-- [ SOP - Upload ] As the OH&S Coordinator I would like to add SOP's to a central database so that TMCA staff can have immediate access to new SOP's.
+- [ SOP - Upload ] As the OH&S Coordinator I would like to add SOP's to a central database so that staff can have immediate access to new SOP's.
 - [ SOP - Update ] [ SOP - Version Control ] As the OH&S Coordinator I would like to easily add updated SOP's to the database so that updates are made available to staff as soon as they are implemented.
 - [ Users - Add New Users ] As the OH&S Coordinator I would like to add new users to the database so that there are no delays in adding new staff or staff changes to the SOP system.
 - [ User - Update Existing User ] As the OH&S Coordinator I would like to be able to edit user accounts so that any staff changes are implemented as soon as they occur.
@@ -177,10 +191,10 @@ __Staff Member - Administration__
 - [ SOP - Search all ] As an administrator I would like to be notified if there has been a change to an SOP that I am required to be familiar with so that I am up to date with the latest information. - (nice to have)
 - [ SOP - View Unread ] As a administrator I would like to access the SOP and user database in an easy to use straight forward interface so that I don't have to learn how to use another system.
 
-![User Stories Trello Board](readme_assets/trello-user-stories.png)
-**Our User Stories Trello Board.**
+![User Stories Trello Board](readme_assets/trello-user-stories.png)\
+Our User Stories Trello Board. Our Trello user stories board can be viewed here, [User Stories Trello Board](https://trello.com/b/PXeF8pny/user-stories).
 
-Click to visit our [User Stories Trello Board](https://trello.com/b/PXeF8pny/user-stories).
+
 
 ## User Workflow
 - A workflow diagram of the user journey/s - (Luke)
