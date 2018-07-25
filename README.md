@@ -11,26 +11,26 @@ Deployed: [www.something.com](#)
 
 ---
 
-- **[Project Summary](#Project-Summary)**
-  - [Project Specifications](#Project-Specifications)  
-- **[Project Management](#Project-Management)**
-  - [Client Interaction](#Client-Interaction)
-  - [Information Gathering](#Information-Gathering)
-  - [Project Planning and Scope](#Project-Planning-and-Scope)
-  - [Project Schedule](#Project-Schedule)
-  - [Work Allocation](#Work-Allocation)
-  - [Git, GitHub and Git Workflow](Git,-GitHub-and-Git-Workflow)
-  - [Code Reviews](#Code-Reviews)
-  - [Final Project Sign Off](#Final-Project-Sign-Off)
-- **[Application Design](Application-Design)**
-  - [Database Design](#Database-design)
-  - [User Stories](#User-Stories)
-  - [User Workflow](#User-Workflow)
-  - [Wireframes](#Wireframes)
-- **[Post Project Summary](Post-Project-Summary)**
-  - [Challenges](#Challenges)
-  - [Improvements](#Improvements)
-  - [Final Review](#Final-review)
+- **[Project Summary](#project-summary)**
+  - [Project Specifications](#project-specifications)  
+- **[Project Management](#project-management)**
+  - [Client Interaction](#client-interaction)
+  - [Information Gathering](#information-gathering)
+  - [Project Planning and Scope](#project-planning-and-scope)
+  - [Project Schedule](#project-schedule)
+  - [Work Allocation](#work-allocation)
+  - [Git, GitHub and Git Workflow](git-github-and-git-workflow)
+  - [Code Reviews](#code-reviews)
+  - [Final Project Sign Off](#final-project-sign-off)
+- **[Application Design](application-design)**
+  - [Database Design](#database-design)
+  - [User Stories](#user-stories)
+  - [User Workflow](#user-workflow)
+  - [Wireframes](#wireframes)
+- **[Post Project Summary](post-project-summary)**
+  - [Challenges](#challenges)
+  - [Improvements](#improvements)
+  - [Final Review](#final-review)
 
 
 # Project Summary
