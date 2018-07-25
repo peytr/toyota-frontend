@@ -19,7 +19,7 @@ Deployed: [www.something.com](#)
   - [Project Planning and Scope](#project-planning-and-scope)
   - [Project Schedule](#project-schedule)
   - [Work Allocation](#work-allocation)
-  - [Git, GitHub and Git Workflow](git-github-and-git-workflow)
+  - [Git GitHub and Git Workflow](git-github-and-git-workflow)
   - [Code Reviews](#code-reviews)
   - [Final Project Sign Off](#final-project-sign-off)
 - **[Application Design](application-design)**
@@ -102,8 +102,12 @@ Team white-boarding planning sessions
 Project presentation for sign off.
 
 ## Project Schedule
-**Work Calendar to be created and added**
-- Prepare project work breakdown and schedule - (Pete)
+A basic project schedule was created to provide a broad overview and understanding of the overall project timeline week to week. Our team trello board was used for more focused project control and individual task detail.
+
+![Project Planner](readme_assets/project-planning.png)
+
+
+
 
 ## Work Allocation
 Project roles and responsibilities were allocated amongst the team after a group discussion via our group Trello board. Using a group trello board allowed us to monitor each others assigned work progress, flag any issues and reassess the project scope as the project build progressed.
