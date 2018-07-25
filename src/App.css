@@ -218,7 +218,6 @@ span.tab-space5 {
 }
 
 .sop-outdated-user:hover {
-  text-decoration: none;
   color: #fff8dc;
   background-color: darkgoldenrod;
   border-radius: .5rem;
@@ -331,4 +330,16 @@ span.tab-space5 {
 .user-warning{
   list-style-type: none;
   padding: 5px;
+}
+
+button a {
+  color: white;
+  text-decoration: none;
+}
+
+button a:hover 
+{
+     color:white; 
+     text-decoration:none; 
+     cursor:pointer;  
 }

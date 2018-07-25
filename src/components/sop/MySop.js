@@ -76,7 +76,7 @@ class MySop extends Component {
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="submit" className="btn btn-primary" onClick={() => this.onReadSop(sop) } data-dismiss="modal">Agree</button>
+                  <button type="submit" className="btn btn-primary" onClick={() => this.onReadSop(sop) } data-dismiss="modal">Submit</button>
                 </div>
               </div>
           </div>
@@ -104,12 +104,18 @@ class MySop extends Component {
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="submit" className="btn btn-primary" onClick={() => this.onReadSop(sop) } data-dismiss="modal">Agree</button>
+                  <button type="submit" className="btn btn-primary" onClick={() => this.onReadSop(sop) } data-dismiss="modal">Submit</button>
                 </div>
               </div>
           </div>
         </div>
       </div>)
+
+      // const outdatedSops = this.state.outdatedSops.map((sop, i) => 
+      //   <div className="sop-outdated" key={i}>  
+      //     <img className="pdf-logo" src={ require('../../img/pdf2.png') } /> 
+      //     {sop.title}  
+      //     <button> Mark As Read </button> </div>)
 
     if (!this.state.loaded) { return(<Loader/>)}
 
