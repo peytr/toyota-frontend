@@ -71,7 +71,7 @@ class MySop extends Component {
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="submit" className="btn btn-primary" onClick={() => this.onReadSop(sop) } data-dismiss="modal">Agree</button>
+                  <button type="submit" className="btn btn-primary" onClick={() => this.onReadSop(sop) } data-dismiss="modal">Submit</button>
                 </div>
               </div>
           </div>
@@ -99,7 +99,7 @@ class MySop extends Component {
                 </div>
                 <div className="modal-footer">
                   <button type="button" className="btn btn-default" data-dismiss="modal">Cancel</button>
-                  <button type="submit" className="btn btn-primary" onClick={() => this.onReadSop(sop) } data-dismiss="modal">Agree</button>
+                  <button type="submit" className="btn btn-primary" onClick={() => this.onReadSop(sop) } data-dismiss="modal">Submit</button>
                 </div>
               </div>
           </div>
