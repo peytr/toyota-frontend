@@ -331,3 +331,15 @@ span.tab-space5 {
   list-style-type: none;
   padding: 5px;
 }
+
+button a {
+  color: white;
+  text-decoration: none;
+}
+
+button a:hover 
+{
+     color:white; 
+     text-decoration:none; 
+     cursor:pointer;  
+}

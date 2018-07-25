@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Loader from '../layout/Loader'
 import instance from '../api/init'
+import { Link } from 'react-router-dom'
+
 
 class ViewUser extends Component {
   constructor(props) {
@@ -259,6 +261,8 @@ class ViewUser extends Component {
                           value="Update User"
                           className="btn btn-secondary"
                         />
+                        <span className="tab-space2"></span>
+                    <button className="btn btn-secondary"><Link to={`/users/${this.props.match.params.id}/password`}>Reset Password</Link></button>
                       </div>
                     </div>
                   </form>
