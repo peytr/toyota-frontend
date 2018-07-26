@@ -58,7 +58,7 @@ class App extends Component {
     const loginRouteComponents = userRoutes.map(({path}, key) =>  <Route path={path} key={key} render={() => <Redirect to="/" />} />)
     if (!this.state.loaded) { return <Loader /> }
     return(
-      <Router forceRefresh={true}>
+      <Router>
       <div>
         { this.state.loggedIn ? <Navbar administrator={this.state.administrator} updateLogout={this.updateLogout}/> : <Header />}
         <div className="container">
