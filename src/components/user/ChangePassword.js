@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import instance from '../api/init'
-import ManageSop from '../sop/ManageSop'
 
 class ChangePassword extends Component {
   constructor(props) {

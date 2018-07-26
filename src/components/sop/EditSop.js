@@ -43,9 +43,9 @@ class EditSop extends Component {
           loaded: true
         })
       })
-    .catch((error)=>{
-        console.log(error);
-    })
+      .catch((error)=>{
+          console.log(error);
+      })
   }
 
   onRemoveUser(user) {
@@ -60,7 +60,9 @@ class EditSop extends Component {
         usersSelectable
       }})
     )
-    .catch()
+    .catch(() => {
+      alert("Unable to remove user. Please try again.")
+    })
   }
 
   onUsersFormSubmit(e){
@@ -78,6 +80,9 @@ class EditSop extends Component {
         }
       }))
     }})
+    .catch(() => {
+      alert("Unable to submit form. Please try again.")
+    })
   }
 
   onChange(e) {
@@ -93,7 +98,7 @@ class EditSop extends Component {
         <td>{sop.version}</td>
         <td>{moment(sop.createdAt).format('DD MMM YYYY')}</td>
         <td>{sop.author}</td>
-        <td><a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.awsPath}`}><img src={pdfLogo} /> View </a> </td>
+        <td><a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.awsPath}`}><img alt="pdf logo" src={pdfLogo} /> View </a> </td>
         <td>Delete </td>
       </tr>
     )
@@ -140,7 +145,7 @@ class EditSop extends Component {
             <dt className="col-sm-3">Department</dt>
             <dd className="col-sm-9">{this.state.sop.department}</dd>
             <dt className="col-sm-3">Link to File</dt>
-            <dd className="col-sm-9"><a class="btn btn-success" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${this.state.sop.currentVersion.awsPath}`}><img src={pdfLogo} /> Download SOP</a></dd>
+            <dd className="col-sm-9"><a class="btn btn-success" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${this.state.sop.currentVersion.awsPath}`}><img alt="pdf logo" src={pdfLogo} /> Download SOP</a></dd>
           </dl>
           <hr />
           <dl className="row">
@@ -160,9 +165,9 @@ class EditSop extends Component {
             <div className="col-sm-8 thing">
               <dl className="row">
                 <dt className="col-sm-4">Users Viewed</dt> 
-                <dd className="col-sm-6 green-bar">{numberUsersRead} ({numberUsersRead == 0 ? 0 : numberUsersReadPercentage}%) </dd>
+                <dd className="col-sm-6 green-bar">{numberUsersRead} ({numberUsersRead === 0 ? 0 : numberUsersReadPercentage}%) </dd>
                 <dt className="col-sm-4">Users Not Viewed</dt>
-                <dd className="col-sm-6 red-bar">{numberUsersUnread} ({numberUsersUnread == 0 ? 0 : numberUsersUnreadPercentage}%) </dd>
+                <dd className="col-sm-6 red-bar">{numberUsersUnread} ({numberUsersUnread === 0 ? 0 : numberUsersUnreadPercentage}%) </dd>
                 <dt className="col-sm-4">Users Required To View</dt>
                 <dd className="col-sm-6 grey-bar">{numberUsersTotal}</dd>
               </dl>

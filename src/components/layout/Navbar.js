@@ -18,7 +18,6 @@ const Navbar = ({administrator, updateLogout}) => {
 
     return (
        <nav className="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-            {/* <img className="logo" src={ require('../../img/Toyota_logo.png') } /> */}
             <h1 className="title">TOYOTA</h1>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile-nav">
               <span className="navbar-toggler-icon"></span>
