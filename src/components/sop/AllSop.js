@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import Loader from '../layout/Loader'
 import axios from '../api/init'
 import ReactTable from 'react-table'
@@ -21,9 +20,9 @@ class AllSop extends Component {
           loaded: true
         })
       })
-    .catch((error)=>{
-        console.log(error);
-    })
+      .catch((error)=>{
+          console.log(error);
+      })
   }   
 
   render() {
@@ -38,7 +37,7 @@ class AllSop extends Component {
               Header: "Title",
               accessor: "title",
               Cell: (data) => (
-                <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${data.original.awsPath}`}><span><img src={pdfLogo} /> {data.value} </span></a>
+                <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${data.original.awsPath}`}><span><img alt="pdf logo" src={pdfLogo} /> {data.value} </span></a>
               )
             },
             {

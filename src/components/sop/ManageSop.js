@@ -42,7 +42,7 @@ class ManageSop extends Component {
               Header: "Title",
               accessor: "title",
               Cell: (data) => (
-                <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${data.original.currentVersion.awsPath}`}><span><img src={pdfLogo} /> {data.value} </span></a>
+                <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${data.original.currentVersion.awsPath}`}><span><img alt="pdf logo" src={pdfLogo} /> {data.value} </span></a>
               )
             },
             {
