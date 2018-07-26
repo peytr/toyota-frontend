@@ -80,8 +80,8 @@ We recorded our client interactions, meeting schedules and emails on our Trello 
 
 Meeting content, meeting minutes and important email content was attached to the corresponding Trello card, available for the team to view.\
 <br>
-Trello client interaction diary.
-![Client Interactions Diary](readme_assets/client-meeting-diary.png)\
+Trello client interaction diary.\
+![Client Interactions Diary](readme_assets/client-meeting-diary.png)
 
 ## Information Gathering
 After the initial meeting with our client we were able to understand the full requirements of the project. This allowed us to carry out extensive research so we were able to move forward and start coding confidently knowing we had the tools available to complete the tasks required.\
@@ -92,19 +92,19 @@ From our research we were able to determine that we needed to provide the follow
 - administration rights
 
 ## Project Planning and Scope
-Team white-boarding planning sessions
-![Team Whiteboard Planning 1](readme_assets/group-whiteboard.png) ![Team Whiteboard Planning 1](readme_assets/whiteboard-output.png)\
+Team white-boarding planning sessions\
+![Team Whiteboard Planning 1](readme_assets/group-whiteboard.png) ![Team Whiteboard Planning 1](readme_assets/whiteboard-output.png)
 
  Once we understood our project requirements and had a plan of attack our team put together a keynote presentation which included a preliminary statement of project scope and planning direction which we presented to our team of instructors for project sign off.
 
-Project presentation for sign off.
+Project presentation for sign off.\
 ![Keynote Slide 1](readme_assets/project-charter-1.png)
-![Keynote Slide 2](readme_assets/project-charter-2.png)\
+![Keynote Slide 2](readme_assets/project-charter-2.png)
 
 ## Project Schedule
 A basic project schedule was created to provide a broad overview and understanding of the overall project timeline week to week. Our team trello board was used for more focused project control and individual task detail.
 
-Group project planner.
+Group project planner.\
 ![Project Planner](readme_assets/project-planning.png)
 
 ## Work Allocation
@@ -117,8 +117,8 @@ Our group trello board included the following lists:
 - Completed
 - Issues
 
-Group Tracking Trello Board.
-![Group Tracking Trello Board](readme_assets/trello.png)\
+Group Tracking Trello Board.\
+![Group Tracking Trello Board](readme_assets/trello.png)
 
 Our group trello board can be visited using the following link -
 [Group 2 - Trello Board](https://trello.com/b/JF1Avb8y/toyota-ppd-sop-app).
@@ -131,8 +131,8 @@ One team member was made Git master and other team members forked the developmen
 
 Further insights in to our merges, commits, pull requests and overall project flow can be found at our GitHub links at the top of this document. [Top](#CA-Team-2---Term-3-Group-Project)
 
-Front and Back-end GitHub insights
-![Front-end GitHub Insights](readme_assets/github-frontend.png) ![Back-end GitHub Insights](readme_assets/github-backend.png)\
+Front and Back-end GitHub insights\
+![Front-end GitHub Insights](readme_assets/github-frontend.png) ![Back-end GitHub Insights](readme_assets/github-backend.png)
 
 ## Code Reviews
 A big part of our application construction process was refactoring initial development code into more simple and easier to read production-level code.
@@ -152,8 +152,8 @@ Each morning we conducted stand-up meetings to ensure these reviews were routine
 
 # Application Design
 ## Database Design
-Our database schema design.
-![Database Schema Design](readme_assets/team-2-erd.png)\
+Our database schema design.\
+![Database Schema Design](readme_assets/team-2-erd.png)
 
 ## User Stories
 Our User Stories
@@ -195,8 +195,9 @@ __Staff Member - Administration__
 - [ SOP - Search all ] As an administrator I would like to be notified if there has been a change to an SOP that I am required to be familiar with so that I am up to date with the latest information. - (nice to have)
 - [ SOP - View Unread ] As a administrator I would like to access the SOP and user database in an easy to use straight forward interface so that I don't have to learn how to use another system.
 
+Our User Stories Trello Board.\
 ![User Stories Trello Board](readme_assets/trello-user-stories.png)\
-Our User Stories Trello Board. Our Trello user stories board can be viewed here, [User Stories Trello Board](https://trello.com/b/PXeF8pny/user-stories).
+Our Trello user stories board can be viewed here, [User Stories Trello Board](https://trello.com/b/PXeF8pny/user-stories).
 
 
 
