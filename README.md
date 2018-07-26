@@ -1,9 +1,7 @@
 # CA Team 2 - Term 3 Group Project
 # Safe Operating Procedure Management Application
 
-GitHub: [Front-end](#)
-
-GitHub: [Back-end](#)
+GitHub: [Front-end](#) - GitHub: [Back-end](#)
 
 Deployed: [https://radiant-river-46965.herokuapp.com/](https://radiant-river-46965.herokuapp.com/)
 
@@ -13,15 +11,6 @@ Deployed: [https://radiant-river-46965.herokuapp.com/](https://radiant-river-469
 
 - **[Project Summary](#project-summary)**
   - [Project Specifications](#project-specifications)  
-- **[Project Management](#project-management)**
-  - [Client Interaction](#client-interaction)
-  - [Information Gathering](#information-gathering)
-  - [Project Planning and Scope](#project-planning-and-scope)
-  - [Project Schedule](#project-schedule)
-  - [Work Allocation](#work-allocation)
-  - [Git GitHub and Git Workflow](git-github-and-git-workflow)
-  - [Code Reviews](#code-reviews)
-  - [Final Project Sign Off](#final-project-sign-off)
 - **[Application Design](application-design)**
   - [Database Design](#database-design)
   - [User Stories](#user-stories)
@@ -72,83 +61,6 @@ __Back-end__
 - Express
 - MongoDB
 - Mongoose
-
-# Project Management
-## Client Interaction
-### Meeting schedules, meeting minutes and emails
-We recorded our client interactions, meeting schedules and emails on our Trello board so that all team members had access to the information.
-
-Meeting content, meeting minutes and important email content was attached to the corresponding Trello card, available for the team to view.\
-<br>
-Trello client interaction diary.\
-![Client Interactions Diary](readme_assets/client-meeting-diary.png)
-
-## Information Gathering
-After the initial meeting with our client we were able to understand the full requirements of the project. This allowed us to carry out extensive research so we were able to move forward and start coding confidently knowing we had the tools available to complete the tasks required.\
-From our research we were able to determine that we needed to provide the following:
-- user authentication
-- user authorization
-- file upload and download
-- administration rights
-
-## Project Planning and Scope
-Team white-boarding planning sessions\
-![Team Whiteboard Planning 1](readme_assets/group-whiteboard.png) ![Team Whiteboard Planning 1](readme_assets/whiteboard-output.png)
-
- Once we understood our project requirements and had a plan of attack our team put together a keynote presentation which included a preliminary statement of project scope and planning direction which we presented to our team of instructors for project sign off.
-
-Project presentation for sign off.\
-![Keynote Slide 1](readme_assets/project-charter-1.png)
-![Keynote Slide 2](readme_assets/project-charter-2.png)
-
-## Project Schedule
-A basic project schedule was created to provide a broad overview and understanding of the overall project timeline week to week. Our team trello board was used for more focused project control and individual task detail.
-
-Group project planner.\
-![Project Planner](readme_assets/project-planning.png)
-
-## Work Allocation
-Project roles and responsibilities were allocated amongst the team after a group discussion via our group Trello board. Using a group trello board allowed us to monitor each others assigned work progress, flag any issues and reassess the project scope as the project build progressed.
-Our group trello board included the following lists:
-- Components backlog
-- Misc backlog
-- In progress
-- For review
-- Completed
-- Issues
-
-Group Tracking Trello Board.\
-![Group Tracking Trello Board](readme_assets/trello.png)
-
-Our group trello board can be visited using the following link -
-[Group 2 - Trello Board](https://trello.com/b/JF1Avb8y/toyota-ppd-sop-app).
-
-## Git, GitHub and Git Workflow
-To prevent any workflow issues we decided as a group from the start to have a protected master and work off a front-end and back-end development branch. 
-Pull requests were made to the master branch at intermittent times through out the project.
-
-One team member was made Git master and other team members forked the development branches and worked on feature branches from there.
-
-Further insights in to our merges, commits, pull requests and overall project flow can be found at our GitHub links at the top of this document. [Top](#CA-Team-2---Term-3-Group-Project)
-
-Front and Back-end GitHub insights\
-![Front-end GitHub Insights](readme_assets/github-frontend.png) ![Back-end GitHub Insights](readme_assets/github-backend.png)
-
-## Code Reviews
-A big part of our application construction process was refactoring initial development code into more simple and easier to read production-level code.
-
-This is often possible once the initial code that was written just to get a piece of the application to work is looked over by other group members. Often as we spend so long on a single component we become blind to a better and perhaps easier method to achieve the same outcome.
-
-Each morning we conducted stand-up meetings to ensure these reviews were routine, and that each member was able to explain the latest code they wrote to the the rest.
-
-## Final Project Sign Off
-**After Thursday final meeting**
-- Manage system testing and hand over activities. Prepare maintenance or support plans for client
-- Obtain final project sign-off
-- As a team, conduct post project review
-- Create a questionnaire for the client to ascertain the satisfaction with your products and services
-
-<br>
 
 # Application Design
 ## Database Design
@@ -259,18 +171,12 @@ Finally, the most significant challenge was the time frame we had. As the projec
 
 Our attempts of allocating workloads amongst group members were a great way to start. However, many tasks seemed to stretch well over their intended completion times, and inescapably, we put in some long nights to get the work done.
 
-## Improvements and Final review
-Overall, both our team and our Clients are extremely pleased with the final result. No doubt we will be solving a great problem of theirs and we learnt a great deal along the way.
-
+## Improvements
 As far as future improvements are concerned, we'd like to implement the following;
 
-- Email notifications each time a new SOP is allocated to an employee's reading list or a version is uploaded.
+- Email notifications. 
+  - Each time a new SOP is allocated to an employee's reading list or a new version of a required SOP is uploaded a notification will be received via email.
+  - If a user has SOP's in their required to read list for a certain period of time that have been unread a reminder email notification will be sent.
 
-As part of our plan to learn as much as possible about application production, we sought honest and, where possible, critical feedback on our work.
+- Full implementation with IE11. Currently our app works on both the Chrome and Safari browsers but has some issues working on IE11.
 
-Although our Clients were very satisfied with our product, we asked them to fill out the below questionnaire in an attempt to elicit genuine feedback.
-
-Our customer feedback questionnaire.\
-![Customer Feedback Questionnaire](readme_assets/questionnaire.png "Customer Feedback Questionnaire")
-
-All in all we as a team are very grateful for the project given to us by Toyota Australia are very pleased to say that it has been a very pleasant experience for all parties involved.
