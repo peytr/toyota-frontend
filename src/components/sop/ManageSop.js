@@ -51,7 +51,8 @@ class ManageSop extends Component {
             },
             {
               Header: "Latest Version",
-              accessor: "currentVersion.version"
+              accessor: "currentVersion.version",
+              className: "table-center"
             },
             {
               id: "createdAt",
@@ -74,7 +75,8 @@ class ManageSop extends Component {
               accessor: "_id",
               Cell: row => (
                 <Link to={`/sops/${row.value}`}>Manage</Link>
-              )
+              ),
+              className: "table-center"
             }
           ]}
           className="-striped -highlight"

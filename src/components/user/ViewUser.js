@@ -145,7 +145,6 @@ class ViewUser extends Component {
     const readSops = this.state.readSops.map((sop, i) => <div className="sop-read" key={i}>{sop.title}</div>)
     const unreadSops = this.state.unreadSops.map((sop, i) => <div className="sop-unread-admin" key={i}>{sop.title}</div>)
     const outdatedSops = this.state.outdatedSops.map((sop, i) => <div className="sop-outdated" key={i}>{sop.title}</div>)
-    // let showUnreadSopsTitle = false
 
     if(this.state.user) {
       return (

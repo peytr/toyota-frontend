@@ -42,7 +42,8 @@ class AllSop extends Component {
             },
             {
               Header: "Latest Version",
-              accessor: "version"
+              accessor: "version",
+              className: "table-center"
             },
             {
               Header: "Department",

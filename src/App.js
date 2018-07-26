@@ -10,7 +10,6 @@ import Error403 from './components/errors/Error403'
 import axios from './api/init'
 import adminRoutes from './routes/adminRoutes'
 import userRoutes from './routes/userRoutes'
-import history from './components/layout/history'
 
 class App extends Component {
   state = {
@@ -56,10 +55,10 @@ class App extends Component {
     const adminRouteComponents = adminRoutes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />)
     const forbiddenOrLoginRouteComponents = adminRoutes.map(({path}, key) => this.state.loggedIn ? <Route exact path={path} component={Error403} key={key} /> : <Redirect to="/" key={key}/>)
     const userRouteComponents = userRoutes.map(({path, component}, key) => <Route exact path={path} component={component} key={key} />)
-    const loginRouteComponents = userRoutes.map(({path}, key) =>  <Route path={path} render={() => <Redirect to="/" key={key}/>} />)
+    const loginRouteComponents = userRoutes.map(({path}, key) =>  <Route path={path} key={key} render={() => <Redirect to="/" />} />)
     if (!this.state.loaded) { return <Loader /> }
     return(
-      <Router history={history} forceRefresh={true}>
+      <Router forceRefresh={true}>
       <div>
         { this.state.loggedIn ? <Navbar administrator={this.state.administrator} updateLogout={this.updateLogout}/> : <Header />}
         <div className="container">
