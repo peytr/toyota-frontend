@@ -49,6 +49,9 @@ class AddSopVersion extends React.Component {
         })
       }
     })
+    .catch(() => {
+      alert("Unable to upload new version. Please try again.")
+    })
   }
 
   onChange(e) {

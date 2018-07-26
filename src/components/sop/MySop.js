@@ -44,13 +44,15 @@ class MySop extends Component {
           }
         })
       }})
-    .catch()
+    .catch(() => {
+      alert("Unable to mark as read. Please try again.")
+    })
   }
   
   render() {
     const readSops = this.state.readSops.map((sop, i) => <div className="sop-read" key={i}> 
     <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
-      <img className="pdf-logo" src={ require('../../img/pdf2.png') } />
+      <img className="pdf-logo" alt="pdf logo" src={ require('../../img/pdf2.png') } />
       {sop.title}
     </a>
     </div>)
@@ -59,7 +61,7 @@ class MySop extends Component {
       <div className="unread-list-item" key={i}>
         <div className="sop-unread-user">
           <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
-            <img className="pdf-logo" src={ require('../../img/pdf2.png') } />
+            <img className="pdf-logo" alt="pdf logo" src={ require('../../img/pdf2.png') } />
             {sop.title}
           </a>
         </div>
@@ -88,7 +90,7 @@ class MySop extends Component {
     const outdatedSops = this.state.outdatedSops.map((sop, i) => 
       <div className="unread-list-item" key={i}>
           <a className="sop-outdated-user" href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${sop.currentVersion.awsPath}`}>
-          <img className="pdf-logo" src={ require('../../img/pdf.png') } />
+          <img className="pdf-logo" alt="pdf logo" src={ require('../../img/pdf.png') } />
           {sop.title}
           </a>
           <div className="span4 proj-div button-mark-read-outdated" data-toggle="modal" data-target="#Modal">Mark as read</div>
@@ -110,12 +112,6 @@ class MySop extends Component {
           </div>
         </div>
       </div>)
-
-      // const outdatedSops = this.state.outdatedSops.map((sop, i) => 
-      //   <div className="sop-outdated" key={i}>  
-      //     <img className="pdf-logo" src={ require('../../img/pdf2.png') } /> 
-      //     {sop.title}  
-      //     <button> Mark As Read </button> </div>)
 
     if (!this.state.loaded) { return(<Loader/>)}
 
