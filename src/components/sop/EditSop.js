@@ -130,8 +130,8 @@ class EditSop extends Component {
     const numberUsersUnread = this.state.usersUnread.length
     const numberUsersTotal = this.state.usersRead.length + this.state.usersUnread.length
 
-    const numberUsersReadPercentage = numberUsersRead * (Math.round(100*numberUsersRead/numberUsersTotal))
-    const numberUsersUnreadPercentage = numberUsersUnread * (Math.round(100*numberUsersUnread/numberUsersTotal))
+    const numberUsersReadPercentage = (Math.round(100*numberUsersRead/numberUsersTotal))
+    const numberUsersUnreadPercentage = (Math.round(100*numberUsersUnread/numberUsersTotal))
 
 
     return(

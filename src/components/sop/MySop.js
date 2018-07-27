@@ -65,8 +65,8 @@ class MySop extends Component {
             {sop.title}
           </a>
         </div>
-          <div className="span4 proj-div button-mark-read" data-toggle="modal" data-target={`Modal${sop._id}`}>Mark as read</div>
-          <div id={`Modal${sop._id}`} class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div className="span4 proj-div button-mark-read" data-toggle="modal" data-target={`#Modal${sop._id}`}>Mark as read</div>
+          <div id={`Modal${sop._id}`} className="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div className="modal-dialog" tabindex="-1" role="dialog">
               <div className="modal-content">
                 <div className="modal-header">
@@ -93,8 +93,8 @@ class MySop extends Component {
           <img className="pdf-logo" alt="pdf logo" src={ require('../../img/pdf.png') } />
           {sop.title}
           </a>
-          <div className="span4 proj-div button-mark-read-outdated" data-toggle="modal" data-target={`Modal${sop._id}`}>Mark as read</div>
-          <div id={`Modal${sop._id}`} class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div className="span4 proj-div button-mark-read-outdated" data-toggle="modal" data-target={`#Modal${sop._id}`}>Mark as read</div>
+          <div id={`Modal${sop._id}`} className="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div className="modal-dialog" tabindex="-1" role="dialog">
               <div className="modal-content">
                 <div className="modal-header">
