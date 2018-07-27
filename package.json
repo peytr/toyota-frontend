@@ -33,13 +33,13 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lukeylunchbox/toyota-frontend.git"
+    "url": "git+https://github.com/peytr/toyota-frontend.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lukeylunchbox/toyota-frontend/issues"
+    "url": "https://github.com/peytr/toyota-frontend/issues"
   },
-  "homepage": "/portal"
+  "homepage": "/"
 }
