@@ -1,7 +1,7 @@
 # CA Team 2 - Term 3 Group Project
 # Safe Operating Procedure Management Application
 
-GitHub: [Front-end](#) - GitHub: [Back-end](#)
+GitHub: [Front-end](https://github.com/peytr/toyota-frontend) - GitHub: [Back-end](https://github.com/peytr/toyota-backend)
 
 Deployed: [https://radiant-river-46965.herokuapp.com/](https://radiant-river-46965.herokuapp.com/)
 
