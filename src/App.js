@@ -32,7 +32,6 @@ class App extends Component {
   }
   
   updateLogin = (data) => {
-    console.log(data)
     this.setState({
       loggedIn: true,
       administrator: data.administrator,
