@@ -136,7 +136,7 @@ class Register extends Component {
             <div className="form-alert">{this.state.lastNameError}</div>
           </div>
           <div className="form-group">
-          <label className='label'>Toyota Number</label>
+          <label className='label'>Employee Number</label>
             <input 
             type="text" 
             className="form-control form-control-md"
