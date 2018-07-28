@@ -32,11 +32,7 @@ const Navbar = ({administrator, updateLogout}) => {
                 </li>
                 {administrator ? adminLinkComponents : userLinkComponents}
                 <li className="nav-item">
-<<<<<<< HEAD
-                  <a href="#" className="nav-link" to="/logout" onClick={updateLogout}>Log out</a>
-=======
                   <a href="#" className="nav-link" onClick={updateLogout}>Log out</a>
->>>>>>> e27f73cf65629ebdd4b46839490071ded43435dd
                 </li>
             </ul>
             </div>

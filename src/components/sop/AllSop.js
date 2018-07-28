@@ -37,7 +37,7 @@ class AllSop extends Component {
               Header: "Title",
               accessor: "title",
               Cell: (data) => (
-                <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${data.original.awsPath}`}><span><img alt="pdf logo" src={pdfLogo} /> {data.value} </span></a>
+                <a href={`${process.env.REACT_APP_BACKEND_URL}/sops/download/${data.original.awsPath}`} target="_blank" rel="noopener noreferrer"><span><img alt="pdf logo" src={pdfLogo} /> {data.value} </span></a>
               )
             },
             {
