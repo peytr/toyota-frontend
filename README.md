@@ -3,7 +3,7 @@
 
 GitHub: [Front-end](https://github.com/peytr/toyota-frontend) - GitHub: [Back-end](https://github.com/peytr/toyota-backend)
 
-Deployed: [https://radiant-river-46965.herokuapp.com/](https://radiant-river-46965.herokuapp.com/)
+Deployed: [https://zealous-morse-4b2e8d.netlify.com/](https://zealous-morse-4b2e8d.netlify.com/)
 
 ## Table of Contents
 
