@@ -60,8 +60,6 @@ class ResetPassword extends Component {
     event.preventDefault();
     const err = this.validate()
     if (!err) {
-    console.log(this.state);
-
     const password = {
       password: this.state.password,
       password2: this.state.password2
@@ -73,7 +71,6 @@ class ResetPassword extends Component {
       this.props.history.go(-1)
     })
     .catch(err => {
-      console.log(password)
       console.error(err)
   })
     

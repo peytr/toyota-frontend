@@ -12,12 +12,10 @@ class ManageUsers extends Component {
   componentDidMount() {
     instance.get('users/')
      .then((response) => {
-       console.log(response);
        this.setState({
          users: response.data,
          loaded: true
         })
-      //  console.log(this.state)
      })
     .catch((error)=>{
        console.log(error);

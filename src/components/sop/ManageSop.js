@@ -16,7 +16,6 @@ class ManageSop extends Component {
   componentDidMount() {
     axios.get('/sops')
       .then((response) => {
-        console.log(response);
         this.setState({
           sops: response.data,
           loaded: true

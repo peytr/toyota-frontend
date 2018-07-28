@@ -30,7 +30,6 @@ class Login extends Component {
           this.props.updateLogin(res.data) 
           }
        else{
-         console.log(res.data.errors)
          this.setState({incorrectCredentials: res.data.errors})
        }
       })
@@ -49,14 +48,13 @@ class Login extends Component {
             <br/>
             <br/>
             <br/>
-              <h3 className="display-8 text-center">Toyota Australia</h3>
               <h3 className="display-8 text-center">Product Planning Division</h3>
               <h3 className="display-8 text-center">Standard Operating Procedures</h3>
             <br/>
             <br/>
             <form onSubmit={this.onSubmit.bind(this)}>
               <div className="form-group">
-                <label className='label'>Toyota Number</label>
+                <label className='label'>Employee Number</label>
                 <input type="text" 
                 className="form-control form-control-lg"
                 name="employeeNumber"

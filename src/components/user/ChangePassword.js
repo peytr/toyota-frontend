@@ -67,8 +67,6 @@ class ChangePassword extends Component {
     event.preventDefault();
     const err = this.validate()
     if (!err) {
-    console.log(this.state);
-
     // on submit form data to update password in database
     const password = {
       oldPassword: this.state.oldPassword,
