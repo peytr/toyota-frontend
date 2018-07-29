@@ -1,8 +1,6 @@
 # CA Team 2 - Term 3 Group Project
 # Safe Operating Procedure Management Application
 
-GitHub: [Front-end](https://github.com/peytr/toyota-frontend) - GitHub: [Back-end](https://github.com/peytr/toyota-backend)
-
 Deployed: [https://zealous-morse-4b2e8d.netlify.com/](https://zealous-morse-4b2e8d.netlify.com/)
 
 ## Table of Contents
