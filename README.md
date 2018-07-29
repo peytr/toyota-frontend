@@ -130,19 +130,19 @@ We built a significant amount of wireframes on Figma prior to commencing any cod
 Although there were too many wireframes built to show them all in detail, some examples can be seen below:
 
 Desktop - Admin (MySOP Page)\
-![Admin Desktop](readme_assets/desktop-admin-manage-user-800-1.png)
+![Admin Desktop](readme_assets/desktop-admin-manage-user.png)
 
 Desktop - User (MySOP Page)\
-![User Desktop](readme_assets/desktop-user-mysop-800.png)
+![User Desktop](readme_assets/desktop-user-mysop.png)
 
 Mobile - Admin (Users Pages)\
-![Admin Mobile](readme_assets/iphone-1-1-600-1.png)
+![Admin Mobile](readme_assets/iphone-1.png)
 
 Mobile - User (Login Pages)\
-![User Mobile](readme_assets/iphone-1-600-1.png)
+![User Mobile](readme_assets/iphone-2.png)
 
 The extent of out wireframes\
-![Complete Wireframe](readme_assets/wireframes-all-1.png)
+![Complete Wireframe](readme_assets/wireframes-all.png)
 
 ## Challenges
 During the production period of our application, we inevitably faced several challenges that put a halt to plans.
