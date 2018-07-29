@@ -78,8 +78,6 @@ class ViewUser extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
-
     const err = this.validate()
     if (!err) {
 
@@ -106,10 +104,8 @@ class ViewUser extends Component {
       active: this.state.active,
       administrator: this.state.administrator
     }
-    console.log(user)
     instance.patch(`/users/${this.props.match.params.id}`, user) 
     .then(res => {
-      console.log(res.data);
       alert('User successfully updated')
       this.props.history.go(-1)
     })
@@ -120,7 +116,6 @@ class ViewUser extends Component {
   componentDidMount() {
     instance.get(`/users/${this.props.match.params.id}`)
      .then((response) => {
-       console.log(response);
        this.setState({
         user: true,
         firstName: response.data.user.firstName,
@@ -261,7 +256,7 @@ class ViewUser extends Component {
                           className="btn btn-secondary"
                         />
                         <span className="tab-space2"></span>
-                    <button className="btn btn-secondary"><Link to={`/users/${this.props.match.params.id}/password`}>Reset Password</Link></button>
+                        <Link className="btn btn-secondary" to={`/users/${this.props.match.params.id}/password`}>Reset Password</Link>
                       </div>
                     </div>
                   </form>

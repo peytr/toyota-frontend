@@ -149,7 +149,7 @@ The extent of out wireframes\
 ## Challenges
 During the production period of our application, we inevitably faced several challenges that put a halt to plans.
 
-The first and perhaps most serious challenge for us, was that due to our clients current IT situation, our app had to be fully compatible with Internet Explorer 11.  
+The first and perhaps most serious challenge for us, was that due to our clients current IT situation, our app had to be fully compatible with Internet Explorer 11.
 
 This was a difficult ordeal since IE 11 is incompatible with so many standard and expected browser functions. Every new feature we wanted to implement was first cross checked via a browser compatibility app (below).
 

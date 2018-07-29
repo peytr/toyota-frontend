@@ -98,7 +98,6 @@ class Register extends Component {
         this.setState({fireRedirect: true})        
       })
       .catch(err => {
-        console.log(err.response.data.errors)
         this.setState({invalidDetails: Object.values(err.response.data.errors)})
       })
     }
@@ -137,7 +136,7 @@ class Register extends Component {
             <div className="form-alert">{this.state.lastNameError}</div>
           </div>
           <div className="form-group">
-          <label className='label'>Toyota Number</label>
+          <label className='label'>Employee Number</label>
             <input 
             type="text" 
             className="form-control form-control-md"
