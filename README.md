@@ -132,24 +132,24 @@ We built a significant amount of wireframes on Figma prior to commencing any cod
 Although there were too many wireframes built to show them all in detail, some examples can be seen below:
 
 Desktop - Admin (MySOP Page)\
-![Admin Desktop](readme_assets/desktop-admin-manage-user-800.png)
+![Admin Desktop](readme_assets/desktop-admin-manage-user-800-1.png)
 
-Mobile - User (MySOP Page)\
-![User Desktop](readme_assets/ipad-my-sop-75-600.png)
+Desktop - User (MySOP Page)\
+![User Desktop](readme_assets/desktop-user-mysop-800.png)
 
 Mobile - Admin (Users Pages)\
-![Admin Mobile](readme_assets/iphone-1-1-600.png)
+![Admin Mobile](readme_assets/iphone-1-1-600-1.png)
 
 Mobile - User (Login Pages)\
-![User Mobile](readme_assets/iphone-1-600.png)
+![User Mobile](readme_assets/iphone-1-600-1.png)
 
 The extent of out wireframes\
-![Complete Wireframe](readme_assets/wireframes-all.png)
+![Complete Wireframe](readme_assets/wireframes-all-1.png)
 
 ## Challenges
 During the production period of our application, we inevitably faced several challenges that put a halt to plans.
 
-The first and perhaps most serious challenge for us, was that due to Toyota Australia’s current IT situation, our app had to be fully compatible with Internet Explorer 11.  
+The first and perhaps most serious challenge for us, was that due to our clients current IT situation, our app had to be fully compatible with Internet Explorer 11.  
 
 This was a difficult ordeal since IE 11 is incompatible with so many standard and expected browser functions. Every new feature we wanted to implement was first cross checked via a browser compatibility app (below).
 
